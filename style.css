@@ -1,0 +1,28 @@
+html, body {
+	font-size: 1rem;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.turn {
+	display: block;
+}
+
+.moment {
+	display: inline-block;
+	max-width: 200px;
+	padding: 1rem;
+
+	/* so I can see it */
+	border: 1px solid black;
+
+	text-overflow: wrap;
+}
+
+/* moment colouring */
+.MOMENT_GOODY_HUT_TRIGGERED {
+	background-color: orange;
+}
+
+.MOMENT_BATTLE_FOUGHT {
+	background-color: #f97070;
+}

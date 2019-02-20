@@ -1,3 +1,5 @@
+# libraries and generated code
 node_modules
+dist
 
 *.code-workspace
