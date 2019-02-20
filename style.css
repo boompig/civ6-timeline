@@ -26,3 +26,11 @@ html, body {
 .MOMENT_BATTLE_FOUGHT {
 	background-color: #f97070;
 }
+
+.MOMENT_GREAT_PERSON_CREATED_GAME_ERA {
+	background-color: #cd59ff;
+}
+
+.MOMENT_TECH_RESEARCHED_IN_ERA_FIRST {
+	background-color: #5c9ef9;
+}
