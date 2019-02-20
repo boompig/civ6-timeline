@@ -3,19 +3,43 @@ html, body {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
+.player-selector {
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+.timeline {
+	margin-left: 3rem;
+	margin-bottom: 1rem; /* some whitespace at the bottom */
+}
+
 .turn {
 	display: block;
 }
 
+.turn-number {
+	border-radius: 50%; /* round */
+	height: 2.7rem;
+	width: 2.7rem;
+	background-color: #06a313;
+	text-align: center;
+	padding: .5rem;
+	margin-right: 1rem;
+}
+
 .moment {
 	display: inline-block;
-	max-width: 200px;
-	padding: 1rem;
 
-	/* so I can see it */
 	border: 1px solid black;
 
-	text-overflow: wrap;
+	margin-top: .5rem;
+}
+
+.moment:not(.turn-number) {
+	padding: .5rem;
+	margin-right: .5rem;
 }
 
 /* moment colouring */
@@ -28,9 +52,35 @@ html, body {
 }
 
 .MOMENT_GREAT_PERSON_CREATED_GAME_ERA {
+	background-color: #bec1bd;
+}
+
+.MOMENT_GOVERNMENT_ENACTED_TIER_1_FIRST_IN_WORLD, .MOMENT_GOVERNMENT_ENACTED_TIER_1_FIRST,
+.MOMENT_GOVERNMENT_ENACTED_TIER_2_FIRST_IN_WORLD, .MOMENT_GOVERNMENT_ENACTED_TIER_2_FIRST,
+.MOMENT_GOVERNMENT_ENACTED_TIER_3_FIRST_IN_WORLD, .MOMENT_GOVERNMENT_ENACTED_TIER_3_FIRST {
 	background-color: #cd59ff;
 }
 
 .MOMENT_TECH_RESEARCHED_IN_ERA_FIRST {
 	background-color: #5c9ef9;
+}
+
+.MOMENT_GAME_ERA_STARTED_WITH_GOLDEN_AGE {
+	background-color: #ffb71e;
+}
+
+.MOMENT_GAME_ERA_STARTED_WITH_DARK_AGE {
+	background-color: #161512;
+	color: white;
+}
+
+.MOMENT_CITY_BUILT_ON_DESERT {
+	background-color: #ffd48c;
+}
+
+footer {
+	color: grey;
+	margin: 0 auto;
+	text-align: center;
+	font-size: .85rem;
 }

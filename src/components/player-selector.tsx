@@ -7,6 +7,9 @@ interface IPlayerSelectorProps {
 	currentlySelectedPlayer: number;
 }
 
+/**
+ * Allow selecting from among the MAJOR civilizations participating in this game
+ */
 export default class PlayerSelector extends React.Component<IPlayerSelectorProps, {}> {
 	constructor(props: IPlayerSelectorProps) {
 		super(props);
@@ -38,13 +41,17 @@ export default class PlayerSelector extends React.Component<IPlayerSelectorProps
 		</button>);
 		for(let player of this.props.players) {
 			let playerType = this.getPlayerType(player);
+			if(playerType === "City State") {
+				// ignore city states
+				continue;
+			}
 			activeClass = (player.Id === this.props.currentlySelectedPlayer ? "active": "");
 			playerElems.push(<button className={ `btn btn-secondary player ${activeClass}` } onClick={ (e) => this.handleSelect(player.Id) } key={ `player-${player.Id}` }>
 				<span>{ player.CivilizationShortDescription }</span>
 				<span>({ playerType })</span>
 			</button>);
 		}
-		return <div className="btn-group" role="group" aria-label="player selector">
+		return <div className="btn-group player-selector" role="group" aria-label="player selector">
 			{ playerElems}
 		</div>
 	}

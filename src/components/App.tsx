@@ -72,6 +72,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
 					<Timeline
 						moments={ this.state.serverData.Moments }
 						targetPlayer={ this.state.targetPlayer }></Timeline>
+					<footer>Created by Daniel Kats - 2019</footer>
 				</div>
 			);
 		} else {

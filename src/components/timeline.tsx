@@ -1,5 +1,7 @@
 import * as React from "react";
 import { IMoment } from "./interfaces";
+import { StringToTitleCase } from "./utils";
+import MomentParser from "./moment-text-parser";
 
 interface ITimelineProps {
 	targetPlayer: number;
@@ -44,7 +46,11 @@ export default class Timeline extends React.Component<ITimelineProps, ITimelineS
 
 			for(let moment of turnMap[turn]) {
 				if(this.props.targetPlayer === -1 || moment.ActingPlayer === this.props.targetPlayer) {
-					let type = moment.Type.replace("MOMENT_", "").replace(/_/g, " ");
+					let type = StringToTitleCase(moment.Type.replace("MOMENT_", "").replace(/_/g, " "));
+					if(moment.Type === "MOMENT_CITY_TRANSFERRED_FOREIGN_CAPITAL") {
+						const t = MomentParser.parseForeignCapital(moment);
+						console.log(t);
+					}
 					moments.push(
 						<div className={ `moment ${moment.Type}` } key={ `moment-${moment.Id}` }>
 							{ type }

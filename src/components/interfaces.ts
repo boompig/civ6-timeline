@@ -3,6 +3,8 @@ export interface IMoment {
 	Id: number;
 	Type: string;
 	ActingPlayer: number;
+	// instance-specific string that has a bunch of useful information
+	InstanceDescription: string;
 }
 
 export interface IPlayer {
