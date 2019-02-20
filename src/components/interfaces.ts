@@ -15,6 +15,7 @@ export interface IPlayer {
 	CivilizationShortDescription: string;
 	// whether human, AI of major civ, or CityState
 	LeaderType: string;
+	LeaderName: string;
 }
 
 export interface ITimelineData {

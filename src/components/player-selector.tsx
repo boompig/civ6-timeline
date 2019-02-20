@@ -7,6 +7,14 @@ interface IPlayerSelectorProps {
 	currentlySelectedPlayer: number;
 }
 
+enum PlayerType {
+	HUMAN = 1,
+	CITY_STATE = 2,
+	MAJOR_CIV = 3,
+	BARBARIANS = 4,
+	FREE_CITY = 5,
+};
+
 /**
  * Allow selecting from among the MAJOR civilizations participating in this game
  */
@@ -23,13 +31,17 @@ export default class PlayerSelector extends React.Component<IPlayerSelectorProps
 		this.props.onSelectPlayer(playerIndex);
 	}
 
-	getPlayerType(player: IPlayer) {
+	getPlayerType(player: IPlayer): PlayerType {
 		if(player.Id === 0) {
-			return "You";
+			return PlayerType.HUMAN;
 		} else if(player.LeaderType.startsWith("LEADER_MINOR")) {
-			return "City State";
+			return PlayerType.CITY_STATE;
+		} else if(player.LeaderName === "Barbarians") {
+			return PlayerType.BARBARIANS;
+		} else if(player.LeaderName === "Free Cities") {
+			return PlayerType.FREE_CITY;
 		} else {
-			return "AI";
+			return PlayerType.MAJOR_CIV;
 		}
 	}
 
@@ -41,14 +53,16 @@ export default class PlayerSelector extends React.Component<IPlayerSelectorProps
 		</button>);
 		for(let player of this.props.players) {
 			let playerType = this.getPlayerType(player);
-			if(playerType === "City State") {
-				// ignore city states
+			if(playerType === PlayerType.FREE_CITY ||
+				playerType === PlayerType.BARBARIANS ||
+				playerType === PlayerType.CITY_STATE) {
+				// ignore everything but humans and major civs
 				continue;
 			}
 			activeClass = (player.Id === this.props.currentlySelectedPlayer ? "active": "");
 			playerElems.push(<button className={ `btn btn-secondary player ${activeClass}` } onClick={ (e) => this.handleSelect(player.Id) } key={ `player-${player.Id}` }>
 				<span>{ player.CivilizationShortDescription }</span>
-				<span>({ playerType })</span>
+				<span>({ playerType === PlayerType.HUMAN ? "You": player.CivilizationShortDescription })</span>
 			</button>);
 		}
 		return <div className="btn-group player-selector" role="group" aria-label="player selector">

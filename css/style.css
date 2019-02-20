@@ -3,11 +3,13 @@ html, body {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
+.reset-btn {
+	margin: 1rem auto 0 auto;
+	display: block;
+}
+
 .player-selector {
-	margin-bottom: 1rem;
-	margin-top: 1rem;
-	margin-left: 1rem;
-	margin-right: 1rem;
+	margin: 1rem;
 }
 
 .timeline {
