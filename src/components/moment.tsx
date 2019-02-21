@@ -41,7 +41,8 @@ export default class Moment extends React.PureComponent<IMomentProps, {}> {
 				  moment.Type === "MOMENT_GAME_ERA_STARTED_WITH_NORMAL_AGE" ||
 				  moment.Type === "MOMENT_GAME_ERA_STARTED_WITH_DARK_AGE") {
 			return MomentParser.parseGameEntersAge(moment);
-		} else if(moment.Type === "MOMENT_GREAT_PERSON_CREATED_GAME_ERA") {
+		} else if(moment.Type === "MOMENT_GREAT_PERSON_CREATED_GAME_ERA" ||
+			moment.Type === "MOMENT_GREAT_PERSON_CREATED_PAST_ERA") {
 			return MomentParser.parseGreatPersonCreated(moment);
 		} else if(moment.Type === "MOMENT_TECH_RESEARCHED_IN_ERA_FIRST") {
 			const tech = MomentParser.parseTechResearchedInEraFirst(moment);
@@ -55,6 +56,17 @@ export default class Moment extends React.PureComponent<IMomentProps, {}> {
 			return MomentParser.parseGovernmentTier2(moment);
 		} else if(moment.Type === "MOMENT_GOVERNMENT_ENACTED_TIER_3_FIRST_IN_WORLD") {
 			return MomentParser.parseGovernmentTier3(moment);
+		} else if(moment.Type === "MOMENT_BUILDING_CONSTRUCTED_PAST_ERA_WONDER" ||
+			moment.Type === "MOMENT_BUILDING_CONSTRUCTED_GAME_ERA_WONDER") {
+			return MomentParser.parseWonderConstructed(moment);
+		} else if (moment.Type === "MOMENT_UNIT_CREATED_FIRST_REQUIRING_STRATEGIC") {
+			return MomentParser.parseUnitCreatedStrategic(moment);
+		} else if (moment.Type === "MOMENT_PLAYER_GAVE_ENVOY_BECAME_SUZERAIN_FIRST_IN_WORLD") {
+			return MomentParser.parseSuzerain(moment);
+		} else if (moment.Type === "MOMENT_UNIT_CREATED_FIRST_UNIQUE") {
+			return MomentParser.parseUnitCreatedUnique(moment);
+		// } else if (moment.Type === "MOMENT_PANTHEON_FOUNDED") {
+			// return MomentParser.parsePantheon(moment);
 		} else {
 			return "";
 		}

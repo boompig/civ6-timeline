@@ -26,6 +26,9 @@ interface ICivic {
  * <city>, the former capital of <civ>, ...
  */
 export default {
+	/**
+	 * Moment: MOMENT_CITY_TRANSFERRED_FOREIGN_CAPITAL
+	 */
 	parseForeignCapital: (moment: IMoment): IForeignCapital => {
 		const pattern = /(.*?), the former capital of (.*?),/;
 		const match = moment.InstanceDescription.match(pattern);
@@ -36,14 +39,20 @@ export default {
 		};
 	},
 
-	// return the name of the civ
+	/**
+	 * Moment: MOMENT_PLAYER_MET_MAJOR
+	 * @returns the name of the civ
+	 */
 	parsePlayerMetMajor: (moment: IMoment): string => {
 		const pattern = /of our meeting with the people of (.*?).$/;
 		const match = moment.InstanceDescription.match(pattern);
 		return match[1];
 	},
 
-	// return the name of the natural wonder
+	/**
+	 * Moment: MOMENT_FIND_NATURAL_WONDER
+	 * @returns the name of the natural wonder
+	 */
 	parseFindNaturalWonder: (moment: IMoment): string => {
 		const pattern = /Explorers of (.*?) discover the majesty of (.*?).$/;
 		const match = moment.InstanceDescription.match(pattern);
@@ -54,7 +63,9 @@ export default {
 		return match[2];
 	},
 
-	// return the name of the natural wonder
+	/**
+	 * @returns the name of the natural wonder
+	 */
 	parseFindNaturalWonderFirstInWorld: (moment: IMoment): string => {
 		const pattern = /Explorers of (.*?) are the first from a major civilization to set eyes on (.*?)!$/;
 		const match = moment.InstanceDescription.match(pattern);
@@ -62,20 +73,38 @@ export default {
 		return match[2];
 	},
 
-	// return the name of the era
+	/**
+	 * Moments:
+	 *
+	 * 	- MOMENT_GAME_ERA_STARTED_WITH_NORMAL_AGE
+	 *  - MOMENT_GAME_ERA_STARTED_WITH_GOLDEN_AGE
+	 *  - MOMENT_GAME_ERA_STARTED_WITH_DARK_AGE
+	 *
+	 * @returns the name of the era
+	 */
 	parseGameEntersAge: (moment: IMoment): string => {
 		const pattern = /The game enters the (.*?) Era/;
 		const match = moment.InstanceDescription.match(pattern);
 		return match[1];
 	},
 
-	// name of the GP
+	/**
+	 * Moments:
+	 *
+	 * - MOMENT_GREAT_PERSON_CREATED_PAST_ERA
+	 * - MOMENT_GREAT_PERSON_CREATED_GAME_ERA
+	 *
+	 * @returns the name of the GP
+	 */
 	parseGreatPersonCreated: (moment: IMoment): string => {
 		const pattern = /After deliberation, (.*) chooses/;
 		const match = moment.InstanceDescription.match(pattern);
 		return match[1];
 	},
 
+	/**
+	 * Moment: MOMENT_TECH_RESEARCHED_IN_ERA_FIRST
+	 */
 	parseTechResearchedInEraFirst: (moment: IMoment): ITech => {
 		const pattern = /Many dispute the actual start of the (.*?) Era, but you know it was when (.*?) discovered (.*?).$/;
 		const match = moment.InstanceDescription.match(pattern);
@@ -86,6 +115,9 @@ export default {
 		};
 	},
 
+	/**
+	 * Moment: MOMENT_CIVIC_CULTURVATED_IN_ERA_FIRST
+	 */
 	parseCivicResearchedInEraFirst: (moment: IMoment): ICivic => {
 		// this line is long on purpose, so have the linter ignore it
 		// tslint:disable-next-line
@@ -98,6 +130,9 @@ export default {
 		};
 	},
 
+	/**
+	 * @returns the name of the government
+	 */
 	parseGovernmentTier1: (moment: IMoment): string => {
 		const govs = ["Autocracy", "Oligarchy", "Classical Republic"];
 		for (const gov of govs) {
@@ -108,6 +143,9 @@ export default {
 		throw new Error(`Match failed on string: ${moment.InstanceDescription}`);
 	},
 
+	/**
+	 * @returns the name of the government
+	 */
 	parseGovernmentTier2: (moment: IMoment): string => {
 		const govs = ["Monarchy", "Theocracy", "Merchant Republic"];
 		for (const gov of govs) {
@@ -118,6 +156,9 @@ export default {
 		throw new Error(`Match failed on string: ${moment.InstanceDescription}`);
 	},
 
+	/**
+	 * @returns the name of the government
+	 */
 	parseGovernmentTier3: (moment: IMoment): string => {
 		const govs = ["Communism", "Fascism", "Democracy"];
 		for (const gov of govs) {
@@ -126,5 +167,59 @@ export default {
 			}
 		}
 		throw new Error(`Match failed on string: ${moment.InstanceDescription}`);
+	},
+
+	/**
+	 * Moments:
+	 *
+	 * - MOMENT_BUILDING_CONSTRUCTED_PAST_ERA_WONDER
+	 * - MOMENT_BUILDING_CONSTRUCTED_GAME_ERA_WONDER
+	 *
+	 * @returns the name of the wonder
+	 */
+	parseWonderConstructed: (moment: IMoment): string => {
+		const pattern = /Standing in the (.*?),/;
+		const match = moment.InstanceDescription.match(pattern);
+		return match[1];
+	},
+
+	/**
+	 * Moment: MOMENT_UNIT_CREATED_FIRST_REQUIRING_STRATEGIC
+	 *
+	 * @returns the name of the unit
+	 */
+	parseUnitCreatedStrategic: (moment: IMoment): string => {
+		const pattern = /But we know now that it is a formidable weapon for our (.*?).$/;
+		const match = moment.InstanceDescription.match(pattern);
+		return match[1];
+	},
+
+	/**
+	 * Moment: MOMENT_UNIT_CREATED_FIRST_UNIQUE
+	 *
+	 * @returns the name of the unit
+	 */
+	parseUnitCreatedUnique: (moment: IMoment): string => {
+		const pattern = /Who but (.*?) could create the (.*?)\?/;
+		const match = moment.InstanceDescription.match(pattern);
+		return match[2];
+	},
+
+	/**
+	 * Moment: MOMENT_PLAYER_GAVE_ENVOY_BECAME_SUZERAIN_FIRST_IN_WORLD
+	 *
+	 * @returns the name of the City-State
+	 */
+	parseSuzerain: (moment: IMoment): string => {
+		const pattern = /The rulers of (.*?) bow/;
+		const match = moment.InstanceDescription.match(pattern);
+		return match[1];
+	},
+
+	/**
+	 * Moment: MOMENT_PANTHEON_FOUNDED
+	 */
+	parsePantheon: (moment: IMoment): string => {
+		throw new Error("Pantheon not found");
 	},
 };
