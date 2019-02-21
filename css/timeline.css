@@ -3,6 +3,11 @@
 	margin-bottom: 1rem; /* some whitespace at the bottom */
 }
 
+img.icon {
+	height: 1rem;
+	margin-right: .5rem;
+}
+
 .turn {
 	display: block;
 }

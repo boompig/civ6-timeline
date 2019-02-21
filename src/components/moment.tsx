@@ -8,6 +8,18 @@ interface IMomentProps {
 	moment: IMoment;
 }
 
+const icons = {
+	"MOMENT_ARTIFACT_EXTRACTED": "https://vignette.wikia.nocookie.net/civilization/images/8/87/Artifact6.png/revision/latest?cb=20161108220057",
+	// "MOMENT_CIVIC_CULTURVATED_IN_ERA_FIRST": "https://vignette.wikia.nocookie.net/civilization/images/2/2a/Civ6Culture.png/revision/latest?cb=20161108204306",
+	// "MOMENT_TECH_RESEARCHED_IN_ERA_FIRST": "https://vignette.wikia.nocookie.net/civilization/images/7/79/Civ6Science.png/revision/latest?cb=20161108210007",
+	"MOMENT_PLAYER_GAVE_ENVOY_CANCELED_SUZERAIN_DURING_WAR": "https://vignette.wikia.nocookie.net/civilization/images/2/24/Envoy6.png/revision/latest?cb=20161107201124",
+	"MOMENT_PLAYER_GAVE_ENVOY_BECAME_SUZERAIN_FIRST_IN_WORLD": "https://vignette.wikia.nocookie.net/civilization/images/2/24/Envoy6.png/revision/latest?cb=20161107201124",
+	"MOMENT_RELIGION_FOUNDED": "https://vignette.wikia.nocookie.net/civilization/images/8/82/Civ6Faith.png/revision/latest?cb=20161108205537",
+	"MOMENT_RELIGION_FOUNDED_FIRST_IN_WORLD": "https://vignette.wikia.nocookie.net/civilization/images/8/82/Civ6Faith.png/revision/latest?cb=20161108205537",
+	"MOMENT_PANTHEON_FOUNDED": "https://vignette.wikia.nocookie.net/civilization/images/8/82/Civ6Faith.png/revision/latest?cb=20161108205537",
+	"MOMENT_PANTHEON_FOUNDED_FIRST_IN_WORLD": "https://vignette.wikia.nocookie.net/civilization/images/8/82/Civ6Faith.png/revision/latest?cb=20161108205537",
+};
+
 export default class Moment extends React.PureComponent<IMomentProps, {}> {
 	constructor(props: IMomentProps) {
 		super(props);
@@ -63,8 +75,14 @@ export default class Moment extends React.PureComponent<IMomentProps, {}> {
 			return MomentParser.parseUnitCreatedStrategic(moment);
 		} else if (moment.Type === "MOMENT_PLAYER_GAVE_ENVOY_BECAME_SUZERAIN_FIRST_IN_WORLD") {
 			return MomentParser.parseSuzerain(moment);
+		} else if (moment.Type === "MOMENT_PLAYER_GAVE_ENVOY_CANCELED_SUZERAIN_DURING_WAR") {
+			return MomentParser.parseEnvoyCanceledDuringWar(moment);
 		} else if (moment.Type === "MOMENT_UNIT_CREATED_FIRST_UNIQUE") {
 			return MomentParser.parseUnitCreatedUnique(moment);
+		} else if (moment.Type === "MOMENT_RELIGION_FOUNDED") {
+			return MomentParser.parseReligionFounded(moment);
+		} else if (moment.Type === "MOMENT_RELIGION_FOUNDED_FIRST_IN_WORLD") {
+			return MomentParser.parseReligionFoundedFirstInWorld(moment);
 		// } else if (moment.Type === "MOMENT_PANTHEON_FOUNDED") {
 			// return MomentParser.parsePantheon(moment);
 		} else {
@@ -74,10 +92,15 @@ export default class Moment extends React.PureComponent<IMomentProps, {}> {
 
 	render() {
 		const name = this.getName();
+		let img = null;
+		if(icons[this.props.moment.Type]) {
+			img = <img className="icon" src={ icons[this.props.moment.Type] } alt={ name } />
+		}
 		const tooltipText = this.getTooltipText(this.props.moment);
 		return (<div className={ `moment ${this.props.moment.Type}` } key={ `moment-${this.props.moment.Id}` }
 			data-tip={ tooltipText }>
-			{ name }
+			{ img }
+			<span>{ name }</span>
 			{ tooltipText ? <ReactTooltip />: null }
 		</div>);
 	}

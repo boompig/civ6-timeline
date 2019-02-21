@@ -1,5 +1,6 @@
 /**
- * This file parses historic moment-specific strings
+ * This file parses Historic Moment-specific strings
+ * See https://civilization.fandom.com/wiki/Historic_Moments_(Civ6) for details
  */
 
 import { IMoment } from "./interfaces";
@@ -189,9 +190,15 @@ export default {
 	 * @returns the name of the unit
 	 */
 	parseUnitCreatedStrategic: (moment: IMoment): string => {
-		const pattern = /But we know now that it is a formidable weapon for our (.*?).$/;
-		const match = moment.InstanceDescription.match(pattern);
-		return match[1];
+		let pattern = /But we know now that they are a formidable weapon for our (.*?).$/;
+		let match = moment.InstanceDescription.match(pattern);
+		if (match === null) {
+			pattern = /But we know now that it is a formidable weapon for our (.*?).$/;
+			match = moment.InstanceDescription.match(pattern);
+			return match[1];
+		} else {
+			return match[1];
+		}
 	},
 
 	/**
@@ -207,7 +214,6 @@ export default {
 
 	/**
 	 * Moment: MOMENT_PLAYER_GAVE_ENVOY_BECAME_SUZERAIN_FIRST_IN_WORLD
-	 *
 	 * @returns the name of the City-State
 	 */
 	parseSuzerain: (moment: IMoment): string => {
@@ -217,9 +223,43 @@ export default {
 	},
 
 	/**
+	 * Moment: MOMENT_PLAYER_GAVE_ENVOY_CANCELED_SUZERAIN_DURING_WAR
+	 * @returns the name of the City-State
+	 */
+	parseEnvoyCanceledDuringWar: (moment: IMoment): string => {
+		// this line is long on purpose, so have the linter ignore it
+		// tslint:disable-next-line
+		const pattern = /Previous mercenary contracts are subject to renegotiation, when (.*?) overturns the old Suzerain of (.*?)./;
+		const match = moment.InstanceDescription.match(pattern);
+		// match[1] is civ
+		return match[2];
+	},
+
+	/**
 	 * Moment: MOMENT_PANTHEON_FOUNDED
 	 */
 	parsePantheon: (moment: IMoment): string => {
 		throw new Error("Pantheon not found");
+	},
+
+	/**
+	 * Moment: MOMENT_RELIGION_FOUNDED_FIRST_IN_WORLD
+	 * @returns name of the religion
+	 */
+	parseReligionFoundedFirstInWorld: (moment: IMoment): string => {
+		const pattern = /It is said that when (.*?) founded (.*?),/;
+		const match = moment.InstanceDescription.match(pattern);
+		// match[1] is civ
+		return match[2];
+	},
+
+	/**
+	 * Moment: MOMENT_RELIGION_FOUNDED
+	 * @returns name of the religion
+	 */
+	parseReligionFounded: (moment: IMoment): string => {
+		const pattern = /(.*?) is the true path of salvation!/;
+		const match = moment.InstanceDescription.match(pattern);
+		return match[1];
 	},
 };
