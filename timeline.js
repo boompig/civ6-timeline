@@ -13,12 +13,15 @@ module.exports.getPlayers = (civObj) => {
 };
 
 /**
- * Return the types.
+ * Return a histogram of moments as a dictionary
  */
 module.exports.getMoments = (civObj) => {
-    const moments = new Set();
+    const moments = {};
     for(let moment of civObj.Moments) {
-        moments.add(moment.Type);
+		if(!moments[moment.Type]) {
+			moments[moment.Type] = 0;
+		}
+		moments[moment.Type] += 1;
     }
     return moments;
 };

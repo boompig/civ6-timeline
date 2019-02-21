@@ -12,6 +12,7 @@
     "minimist": "^1.2.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
+    "react-tooltip": "^3.9.2",
     "source-map-loader": "^0.2.4",
     "typescript": "^3.3.3",
     "webpack": "^4.29.5"
@@ -27,6 +28,6 @@
     "webpack-cli": "^3.2.3"
   },
   "scripts": {
-	  "lint": "tslint src/components/*.ts"
+    "lint": "tslint src/components/*.ts"
   }
 }

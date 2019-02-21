@@ -2,6 +2,8 @@ import * as React from "react";
 import { IMoment } from "./interfaces";
 import { StringToTitleCase } from "./utils";
 import MomentParser from "./moment-text-parser";
+import * as ReactTooltip from "react-tooltip";
+import Moment from "./moment";
 
 interface ITimelineProps {
 	targetPlayer: number;
@@ -11,7 +13,7 @@ interface ITimelineProps {
 interface ITimelineState {
 }
 
-export default class Timeline extends React.Component<ITimelineProps, ITimelineState> {
+export default class Timeline extends React.PureComponent<ITimelineProps, ITimelineState> {
 	constructor(props: ITimelineProps) {
 		super(props);
 
@@ -35,8 +37,12 @@ export default class Timeline extends React.Component<ITimelineProps, ITimelineS
 	}
 
 	render() {
+		console.log("Building turn map...");
+
 		// construct turnMap
 		const turnMap = this.getTurnMap();
+
+		console.log("constructing elements...");
 
 		let turnElems = [];
 
@@ -46,16 +52,7 @@ export default class Timeline extends React.Component<ITimelineProps, ITimelineS
 
 			for(let moment of turnMap[turn]) {
 				if(this.props.targetPlayer === -1 || moment.ActingPlayer === this.props.targetPlayer) {
-					let type = StringToTitleCase(moment.Type.replace("MOMENT_", "").replace(/_/g, " "));
-					if(moment.Type === "MOMENT_CITY_TRANSFERRED_FOREIGN_CAPITAL") {
-						const t = MomentParser.parseForeignCapital(moment);
-						console.log(t);
-					}
-					moments.push(
-						<div className={ `moment ${moment.Type}` } key={ `moment-${moment.Id}` }>
-							{ type }
-						</div>
-					);
+					moments.push(<Moment moment={moment} key={ `moment-${moment.Id}` } />);
 				}
 			}
 			let turnElem = (
@@ -63,8 +60,9 @@ export default class Timeline extends React.Component<ITimelineProps, ITimelineS
 					{ moments }
 				</div>
 			);
-			turnElems.push(turnElem)
+			turnElems.push(turnElem);
 		}
+		console.log("ready to render");
 
 		return (
 			<div className="timeline">

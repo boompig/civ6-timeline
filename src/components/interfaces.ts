@@ -1,5 +1,6 @@
 export interface IMoment {
 	Turn: number;
+	// unique ID
 	Id: number;
 	Type: string;
 	ActingPlayer: number;

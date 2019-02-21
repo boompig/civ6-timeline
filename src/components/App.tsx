@@ -34,7 +34,6 @@ export default class App extends React.Component<IAppProps, IAppState> {
 		this.handleReset = this.handleReset.bind(this);
 	}
 
-	/*
 	async loadData() {
 		const response = await window.fetch("game-data/2019-02-18-1827-Cyrus.json");
 		if(response.ok) {
@@ -43,6 +42,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
 			console.log(serverData);
 			return this.setState({
 				serverData: (serverData as ITimelineData),
+				isFileUploaded: true,
 			});
 		} else {
 			console.error("Failed to load data");
@@ -52,7 +52,6 @@ export default class App extends React.Component<IAppProps, IAppState> {
 	componentDidMount() {
 		this.loadData();
 	}
-	*/
 
 	handleReset() {
 		window.location.reload();
