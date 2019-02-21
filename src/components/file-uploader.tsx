@@ -31,11 +31,8 @@ export default class FileUploader extends React.Component<IFileUploaderProps, IF
 	}
 
 	handleDrop(acceptedFiles: File[], rejectedFiles: File[]) {
-		console.log(acceptedFiles);
-		console.log(rejectedFiles);
-		console.log("selected file");
-		// FIXME: typescript doesn't register the files property
 		const file = acceptedFiles[0];
+		console.log("got file in Dropzone");
 		if(file.type === "application/json") {
 			this.setState({
 				selectedFile: file,

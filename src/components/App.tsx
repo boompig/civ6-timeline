@@ -73,7 +73,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
 	async parseFile(file: File) {
 		const reader = new FileReader();
 		reader.onload = () => {
-			console.log("data successfully read from file");
+			console.log("[App] data successfully read from file");
 			try {
 				const contents = (reader.result as string);
 				const serverData = JSON.parse(contents);
@@ -103,6 +103,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
 		return this.setState({
 			isFileUploaded: true,
 		}, () => {
+			console.log("[App] selected file");
 			// wait for state to change before doing the oother stuff
 			this.parseFile(file);
 		});
@@ -140,6 +141,15 @@ export default class App extends React.Component<IAppProps, IAppState> {
 					>Reset</button>
 				</div>
 			);
+		} else if (this.state.isFileUploaded && !this.state.errorMsg && !this.state.serverData) {
+			return (<div className="progress-container">
+				<div>Parsing...</div>
+				<div className="progress">
+					<div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+						aria-valuenow={50} aria-valuemin={0} aria-valuemax={100}></div>
+				</div>
+				<Footer />
+			</div>);
 		} else if(this.state.serverData) {
 			return (
 				<div>

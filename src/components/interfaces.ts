@@ -10,6 +10,9 @@ export interface IMoment {
 
 export interface IPlayer {
 	Id: number;
+	// name of the civilization with lots of underscores
+	// format: CIVILIZATION_KOREA
+	Civilization: string;
 	// long pretty description
 	CivilizationDescription: string;
 	// pretty discription

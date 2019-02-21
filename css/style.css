@@ -1,3 +1,7 @@
+/**
+ * Handles styling for App.tsx
+ */
+
 html, body {
 	font-size: 1rem;
 	font-family: Helvetica, Arial, sans-serif;
@@ -11,6 +15,12 @@ html, body {
 .player-selector {
 	margin: 1rem;
 }
+
+.progress-container {
+	max-width: 768px;
+	margin: 1rem auto;
+}
+
 footer {
 	color: grey;
 	margin: 0 auto;

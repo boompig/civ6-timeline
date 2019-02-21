@@ -122,13 +122,27 @@ export default {
 	parseCivicResearchedInEraFirst: (moment: IMoment): ICivic => {
 		// this line is long on purpose, so have the linter ignore it
 		// tslint:disable-next-line
-		const pattern = /Let others say what they will, but the real flourishing of (.*?) Era culture began with the discovery of (.*?) by (.*?).$/;
-		const match = moment.InstanceDescription.match(pattern);
-		return {
-			civ: match[3],
-			civic: match[2],
-			era: match[1],
-		};
+		let pattern = /Let others say what they will, but the real flourishing of (.*?) Era culture began with the discovery of (.*?) by (.*?).$/;
+		let match = moment.InstanceDescription.match(pattern);
+		if(match) {
+			return {
+				civ: match[3],
+				civic: match[2],
+				era: match[1],
+			};
+		} else {
+			pattern = /Let others say what they will, but the real flourishing of (.*?) Era culture began with the rise of (.*?) in (.*?).$/;
+			match = moment.InstanceDescription.match(pattern);
+			if(match) {
+				return {
+					civ: match[3],
+					civic: match[2],
+					era: match[1],
+				};
+			} else {
+				throw new Error(`Match failed on string: ${moment.InstanceDescription}`);
+			}
+		}
 	},
 
 	/**

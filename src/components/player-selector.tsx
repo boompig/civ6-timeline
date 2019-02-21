@@ -1,5 +1,6 @@
 import * as React from "react";
 import { IPlayer } from "./interfaces";
+import { StringToTitleCase } from "./utils";
 
 interface IPlayerSelectorProps {
 	players: IPlayer[];
@@ -36,9 +37,11 @@ export default class PlayerSelector extends React.Component<IPlayerSelectorProps
 			return PlayerType.HUMAN;
 		} else if(player.LeaderType.startsWith("LEADER_MINOR")) {
 			return PlayerType.CITY_STATE;
-		} else if(player.LeaderName === "Barbarians") {
+		// R&F v Vanilla
+		} else if(player.LeaderName === "Barbarians" || player.LeaderName === "LOC_CIVILIZATION_BARBARIAN_NAME") {
 			return PlayerType.BARBARIANS;
-		} else if(player.LeaderName === "Free Cities") {
+		// R&F v Vanilla
+		} else if(player.LeaderName === "Free Cities" || player.LeaderName === "LOC_CIVILIZATION_FREE_CITIES_NAME") {
 			return PlayerType.FREE_CITY;
 		} else {
 			return PlayerType.MAJOR_CIV;
@@ -60,9 +63,13 @@ export default class PlayerSelector extends React.Component<IPlayerSelectorProps
 				continue;
 			}
 			activeClass = (player.Id === this.props.currentlySelectedPlayer ? "active": "");
+			// different data here if R&F or vanilla
+			let civName = player.CivilizationShortDescription.startsWith("LOC_CIVILIZATION_") ?
+				StringToTitleCase(player.Civilization.replace("CIVILIZATION_", "")):
+				player.CivilizationShortDescription;
 			playerElems.push(<button className={ `btn btn-secondary player ${activeClass}` } onClick={ (e) => this.handleSelect(player.Id) } key={ `player-${player.Id}` }>
-				<span>{ player.CivilizationShortDescription }</span>
-				<span>({ playerType === PlayerType.HUMAN ? "You": player.CivilizationShortDescription })</span>
+				<span>{ civName }</span>
+				<span>({ playerType === PlayerType.HUMAN ? "You": "AI" })</span>
 			</button>);
 		}
 		return <div className="btn-group player-selector" role="group" aria-label="player selector">
