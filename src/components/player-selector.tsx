@@ -25,6 +25,7 @@ export default class PlayerSelector extends React.Component<IPlayerSelectorProps
 
 		this.handleSelect = this.handleSelect.bind(this);
 		this.getPlayerType = this.getPlayerType.bind(this);
+		this.getCivName = this.getCivName.bind(this);
 	}
 
 	handleSelect(playerIndex: number) {
@@ -48,12 +49,26 @@ export default class PlayerSelector extends React.Component<IPlayerSelectorProps
 		}
 	}
 
+	// NOTE: reused in moment.tsx
+	getCivName(player: IPlayer): string {
+		// different data here if R&F or vanilla
+		const civName = player.CivilizationShortDescription.startsWith("LOC_CIVILIZATION_") ?
+			StringToTitleCase(player.Civilization.replace("CIVILIZATION_", "")):
+			player.CivilizationShortDescription;
+		return civName
+	}
+
 	render() {
 		let playerElems = [];
-		let activeClass = (this.props.currentlySelectedPlayer === -1 ? "active": "");
-		playerElems.push(<button className={ `btn btn-secondary player ${activeClass}` } onClick={ (e) => this.handleSelect(-1) } key="all-players">
-			All Players
-		</button>);
+		// let activeClass = (this.props.currentlySelectedPlayer === -1 ? "active": "");
+		playerElems.push(
+			<option
+				// className={`btn btn-secondary player ${activeClass}`}
+				onClick={(e) => this.handleSelect(-1)}
+				key="all-players">
+				All Players
+		</option>
+		);
 		for(let player of this.props.players) {
 			let playerType = this.getPlayerType(player);
 			if(playerType === PlayerType.FREE_CITY ||
@@ -62,18 +77,20 @@ export default class PlayerSelector extends React.Component<IPlayerSelectorProps
 				// ignore everything but humans and major civs
 				continue;
 			}
-			activeClass = (player.Id === this.props.currentlySelectedPlayer ? "active": "");
-			// different data here if R&F or vanilla
-			let civName = player.CivilizationShortDescription.startsWith("LOC_CIVILIZATION_") ?
-				StringToTitleCase(player.Civilization.replace("CIVILIZATION_", "")):
-				player.CivilizationShortDescription;
-			playerElems.push(<button className={ `btn btn-secondary player ${activeClass}` } onClick={ (e) => this.handleSelect(player.Id) } key={ `player-${player.Id}` }>
-				<span>{ civName }</span>
-				<span>({ playerType === PlayerType.HUMAN ? "You": "AI" })</span>
-			</button>);
+			// activeClass = (player.Id === this.props.currentlySelectedPlayer ? "active": "");
+			let civName = this.getCivName(player);
+			playerElems.push(
+				<option
+					// className={`btn btn-secondary player ${activeClass}`}
+					onClick={(e) => this.handleSelect(player.Id)}
+					key={`player-${player.Id}`}>
+					{civName}&nbsp;
+					({playerType === PlayerType.HUMAN ? "You" : "AI"})
+				</option>
+			);
 		}
-		return <div className="btn-group player-selector" role="group" aria-label="player selector">
-			{ playerElems}
-		</div>
+		return <select className="custom-select player-selector">
+			{ playerElems }
+		</select>;
 	}
 }

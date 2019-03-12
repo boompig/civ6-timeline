@@ -10,29 +10,63 @@ img.icon {
 
 .turn {
 	display: block;
+	padding: .3rem 0;
 }
 
-.turn-number {
-	border-radius: 50%; /* round */
-	height: 2.7rem;
-	width: 2.7rem;
-	background-color: #06a313;
-	text-align: center;
-	padding: .5rem;
+.turn-number-container, .moment {
+	display: inline-block;
+}
+
+/* center the turn number vertically */
+
+.turn-number-container {
+	height: 100%;
+	/* can't have the moment-event elements pressing right up against it */
 	margin-right: 1rem;
 }
 
-.moment {
-	display: inline-block;
+.turn-number {
+	/* vertically center this guy */
+	position: relative;
+	top: -10px;
+	left: 0;
 
 	border: 1px solid black;
+	/* round */
+	border-radius: 50%;
 
-	margin-top: .5rem;
+	/* fix height and width to create a circle */
+	height: 3.2rem;
+	width: 3.2rem;
+
+	background-color: #6bd356;
+	text-align: center;
+
+	/* inside the border */
+	padding: .7rem;
+	font-size: 1.1rem;
+	font-weight: bold;
 }
 
-.moment:not(.turn-number) {
+.moment {
+	border: 1px solid black;
 	padding: .5rem;
+	margin-top: 0;
+	margin-bottom: 0;
 	margin-right: .5rem;
+}
+
+.moment .civ-name {
+	display: block;
+	font-size: .8rem;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
+
+.moment .event-name {
+	padding: 0;
+	margin: 0;
 }
 
 /* moment colouring */

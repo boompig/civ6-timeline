@@ -7,13 +7,20 @@ html, body {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
-.reset-btn {
-	margin: 1rem auto 0 auto;
+.control-container {
+	margin: 1rem auto;
 	display: block;
+	text-align: center;
 }
 
-.player-selector {
-	margin: 1rem;
+select.player-selector {
+	max-width: 400px;
+	display: inline-block;
+	margin-right: 2rem;
+}
+
+.reset-btn {
+	display: inline-block;
 }
 
 .progress-container {

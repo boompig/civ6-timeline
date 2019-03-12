@@ -2,6 +2,8 @@ import * as React from "react";
 import Dropzone from "react-dropzone";
 import classNames from 'classnames'
 
+import '../../css/file-uploader.css';
+
 interface IFileUploaderProps {
 	onFileUpload(file: File);
 }
@@ -13,6 +15,8 @@ interface IFileUploaderState {
 
 export default class FileUploader extends React.Component<IFileUploaderProps, IFileUploaderState> {
 
+	fileRef: React.Ref<HTMLInputElement>;
+
 	constructor(props: IFileUploaderProps) {
 		super(props);
 
@@ -21,16 +25,24 @@ export default class FileUploader extends React.Component<IFileUploaderProps, IF
 			errorMsg: null,
 		};
 
+		this.fileRef = React.createRef();
+
 		// because javascript is terrible
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleDrop = this.handleDrop.bind(this);
+		this.handleFileSelect = this.handleFileSelect.bind(this);
+	}
+
+	handleFileSelect(e: React.SyntheticEvent): void {
+		const files = (this.fileRef as any).current.files as FileList;
+		this.handleDrop(files, []);
 	}
 
 	handleSubmit(e: React.SyntheticEvent): void {
 		this.props.onFileUpload(this.state.selectedFile);
 	}
 
-	handleDrop(acceptedFiles: File[], rejectedFiles: File[]) {
+	handleDrop(acceptedFiles: (File[] | FileList), rejectedFiles: File[]) {
 		const file = acceptedFiles[0];
 		console.log("got file in Dropzone");
 		if(file.type === "application/json") {
@@ -75,6 +87,17 @@ export default class FileUploader extends React.Component<IFileUploaderProps, IF
 							)
 						}}
 					</Dropzone>
+				}
+
+				{ !this.state.selectedFile ?
+					<form role="form" className="file-upload-form">
+						<label htmlFor="file">Or select the file from disk</label>
+						<input type="file" name="file"
+							className="btn"
+							onChange={this.handleFileSelect}
+							ref={this.fileRef}
+							accept=".json" />
+					</form>: null
 				}
 				<button type="button"
 					className="upload-btn form-control btn btn-primary"

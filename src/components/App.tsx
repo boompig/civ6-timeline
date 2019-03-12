@@ -5,6 +5,8 @@ import PlayerSelector from "./player-selector";
 import FileUploader from "./file-uploader";
 import Footer from "./footer";
 
+import '../../css/App.css';
+
 interface IAppState {
 	serverData: (ITimelineData | null);
 	targetPlayer: number;
@@ -40,6 +42,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
 		this.parseFile = this.parseFile.bind(this);
 	}
 
+	// NOTE: uncomment the section below to quickly load some data for testing the main timeline
 	/*
 	async loadData() {
 		const response = await window.fetch("game-data/2019-02-18-1827-Cyrus.json");
@@ -153,17 +156,20 @@ export default class App extends React.Component<IAppProps, IAppState> {
 		} else if(this.state.serverData) {
 			return (
 				<div>
-					<button type="button"
-						className="reset-btn btn btn-warning btn-lg"
-						onClick={this.handleReset}
-					>Reset</button>
-					<PlayerSelector
-						onSelectPlayer={ this.handleSelectPlayer }
-						players={this.state.serverData.Players}
-						currentlySelectedPlayer={ this.state.targetPlayer }></PlayerSelector>
+					<div className="control-container">
+						<PlayerSelector
+							onSelectPlayer={this.handleSelectPlayer}
+							players={this.state.serverData.Players}
+							currentlySelectedPlayer={this.state.targetPlayer}></PlayerSelector>
+						<button type="button"
+							className="reset-btn btn btn-warning btn-lg"
+							onClick={this.handleReset}
+						>Reset - Upload New File</button>
+					</div>
 					<Timeline
 						moments={ this.state.serverData.Moments }
-						targetPlayer={ this.state.targetPlayer }></Timeline>
+						targetPlayer={ this.state.targetPlayer }
+						players={ this.state.serverData.Players }></Timeline>
 					<Footer />
 				</div>
 			);

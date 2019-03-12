@@ -1,10 +1,13 @@
 import * as React from "react";
-import { IMoment } from "./interfaces";
+import { IMoment, IPlayer } from "./interfaces";
 import Moment from "./moment";
+
+import '../../css/timeline.css';
 
 interface ITimelineProps {
 	targetPlayer: number;
 	moments: IMoment[];
+	players: IPlayer[];
 }
 
 interface ITimelineState {
@@ -45,15 +48,20 @@ export default class Timeline extends React.PureComponent<ITimelineProps, ITimel
 
 		for(let turn in turnMap) {
 			let moments = [];
-			moments.push(<div className="moment turn-number" key={ `turn-number-${turn}` }>{ turn }</div>);
 
 			for(let moment of turnMap[turn]) {
 				if(this.props.targetPlayer === -1 || moment.ActingPlayer === this.props.targetPlayer) {
-					moments.push(<Moment moment={moment} key={ `moment-${moment.Id}` } />);
+					moments.push(<Moment
+						moment={moment}
+						key={ `moment-${moment.Id}` }
+						actingPlayer={ this.props.players[moment.ActingPlayer] } />);
 				}
 			}
 			let turnElem = (
 				<div className="turn" key={ `turn-${turn}` }>
+					<div className="turn-number-container">
+						<div className="turn-number" key={`turn-number-${turn}`}>{turn}</div>
+					</div>
 					{ moments }
 				</div>
 			);

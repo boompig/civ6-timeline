@@ -86,6 +86,96 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./css/App.css":
+/*!*********************!*\
+  !*** ./css/App.css ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../node_modules/css-loader/dist/cjs.js!./App.css */ "./node_modules/css-loader/dist/cjs.js!./css/App.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./css/file-uploader.css":
+/*!*******************************!*\
+  !*** ./css/file-uploader.css ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../node_modules/css-loader/dist/cjs.js!./file-uploader.css */ "./node_modules/css-loader/dist/cjs.js!./css/file-uploader.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./css/timeline.css":
+/*!**************************!*\
+  !*** ./css/timeline.css ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../node_modules/css-loader/dist/cjs.js!./timeline.css */ "./node_modules/css-loader/dist/cjs.js!./css/timeline.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/attr-accept/dist/index.js":
 /*!************************************************!*\
   !*** ./node_modules/attr-accept/dist/index.js ***!
@@ -155,6 +245,51 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	} else {}
 }());
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./css/App.css":
+/*!***********************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./css/App.css ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, "/**\n * Handles styling for App.tsx\n */\n\nhtml, body {\n\tfont-size: 1rem;\n\tfont-family: Helvetica, Arial, sans-serif;\n}\n\n.control-container {\n\tmargin: 1rem auto;\n\tdisplay: block;\n\ttext-align: center;\n}\n\nselect.player-selector {\n\tmax-width: 400px;\n\tdisplay: inline-block;\n\tmargin-right: 2rem;\n}\n\n.reset-btn {\n\tdisplay: inline-block;\n}\n\n.progress-container {\n\tmax-width: 768px;\n\tmargin: 1rem auto;\n}\n\nfooter {\n\tcolor: grey;\n\tmargin: 0 auto;\n\ttext-align: center;\n\tfont-size: .85rem;\n}", ""]);
+
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./css/file-uploader.css":
+/*!*********************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./css/file-uploader.css ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, ".file-uploader {\n\tmax-width: 700px;\n\tmargin: 1rem auto;\n\t/* border: 1px solid black; */\n\t/* border-radius: 1%; */\n\tpadding: 3rem;\n}\n\n.file-uploader .upload-btn {\n\tmargin-top: 1rem;\n}\n\n.dropzone {\n\tborder: 2px dashed green;\n\theight: 400px;\n\twidth: 600px;\n}\n\n.dropzone p {\n\ttext-align: center;\n\tmargin-top: 2rem;\n\tfont-size: 1.1rem;\n}\n\n.file-upload-form {\n\tmargin-top: 1rem;\n\tborder: 1px solid black;\n\tborder-radius: 1%;\n\tpadding: 1rem;\n}\n\n.file-upload-form label {\n\tdisplay: block;\n}", ""]);
+
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./css/timeline.css":
+/*!****************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./css/timeline.css ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, ".timeline {\n\tmargin-left: 2rem;\n\tmargin-bottom: 1rem; /* some whitespace at the bottom */\n}\n\nimg.icon {\n\theight: 1rem;\n\tmargin-right: .5rem;\n}\n\n.turn {\n\tdisplay: block;\n\tpadding: .3rem 0;\n}\n\n.turn-number-container, .moment {\n\tdisplay: inline-block;\n}\n\n/* center the turn number vertically */\n\n.turn-number-container {\n\theight: 100%;\n\t/* can't have the moment-event elements pressing right up against it */\n\tmargin-right: 1rem;\n}\n\n.turn-number {\n\t/* vertically center this guy */\n\tposition: relative;\n\ttop: -10px;\n\tleft: 0;\n\n\tborder: 1px solid black;\n\t/* round */\n\tborder-radius: 50%;\n\n\t/* fix height and width to create a circle */\n\theight: 3.2rem;\n\twidth: 3.2rem;\n\n\tbackground-color: #6bd356;\n\ttext-align: center;\n\n\t/* inside the border */\n\tpadding: .7rem;\n\tfont-size: 1.1rem;\n\tfont-weight: bold;\n}\n\n.moment {\n\tborder: 1px solid black;\n\tpadding: .5rem;\n\tmargin-top: 0;\n\tmargin-bottom: 0;\n\tmargin-right: .5rem;\n}\n\n.moment .civ-name {\n\tdisplay: block;\n\tfont-size: .8rem;\n\ttext-align: center;\n\tpadding: 0;\n\tmargin: 0;\n}\n\n.moment .event-name {\n\tpadding: 0;\n\tmargin: 0;\n}\n\n/* moment colouring */\n.MOMENT_GOODY_HUT_TRIGGERED {\n\tbackground-color: orange;\n}\n\n.MOMENT_BATTLE_FOUGHT {\n\tbackground-color: #f97070;\n}\n\n.MOMENT_GREAT_PERSON_CREATED_GAME_ERA {\n\tbackground-color: #bec1bd;\n}\n\n.MOMENT_GOVERNMENT_ENACTED_TIER_1_FIRST_IN_WORLD, .MOMENT_GOVERNMENT_ENACTED_TIER_1_FIRST,\n.MOMENT_GOVERNMENT_ENACTED_TIER_2_FIRST_IN_WORLD, .MOMENT_GOVERNMENT_ENACTED_TIER_2_FIRST,\n.MOMENT_GOVERNMENT_ENACTED_TIER_3_FIRST_IN_WORLD, .MOMENT_GOVERNMENT_ENACTED_TIER_3_FIRST {\n\tbackground-color: #cd59ff;\n}\n\n.MOMENT_CIVIC_CULTURVATED_IN_ERA_FIRST {\n\tbackground-color: #7207b5;\n\tcolor: white;\n}\n\n.MOMENT_TECH_RESEARCHED_IN_ERA_FIRST {\n\tbackground-color: #5c9ef9;\n}\n\n.MOMENT_GAME_ERA_STARTED_WITH_GOLDEN_AGE {\n\tbackground-color: #ffb71e;\n}\n\n.MOMENT_GAME_ERA_STARTED_WITH_DARK_AGE {\n\tbackground-color: #161512;\n\tcolor: white;\n}\n\n.MOMENT_CITY_BUILT_ON_DESERT {\n\tbackground-color: #ffd48c;\n}\n\n.moment[data-tip]:not([data-tip=\"\"]) {\n\tcursor: pointer;\n}\n", ""]);
+
 
 
 /***/ }),
@@ -32333,6 +32468,7 @@ const timeline_1 = __webpack_require__(/*! ./timeline */ "./src/components/timel
 const player_selector_1 = __webpack_require__(/*! ./player-selector */ "./src/components/player-selector.tsx");
 const file_uploader_1 = __webpack_require__(/*! ./file-uploader */ "./src/components/file-uploader.tsx");
 const footer_1 = __webpack_require__(/*! ./footer */ "./src/components/footer.tsx");
+__webpack_require__(/*! ../../css/App.css */ "./css/App.css");
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -32353,6 +32489,7 @@ class App extends React.Component {
         this.handleReset = this.handleReset.bind(this);
         this.parseFile = this.parseFile.bind(this);
     }
+    // NOTE: uncomment the section below to quickly load some data for testing the main timeline
     /*
     async loadData() {
         const response = await window.fetch("game-data/2019-02-18-1827-Cyrus.json");
@@ -32455,9 +32592,10 @@ class App extends React.Component {
         }
         else if (this.state.serverData) {
             return (React.createElement("div", null,
-                React.createElement("button", { type: "button", className: "reset-btn btn btn-warning btn-lg", onClick: this.handleReset }, "Reset"),
-                React.createElement(player_selector_1.default, { onSelectPlayer: this.handleSelectPlayer, players: this.state.serverData.Players, currentlySelectedPlayer: this.state.targetPlayer }),
-                React.createElement(timeline_1.default, { moments: this.state.serverData.Moments, targetPlayer: this.state.targetPlayer }),
+                React.createElement("div", { className: "control-container" },
+                    React.createElement(player_selector_1.default, { onSelectPlayer: this.handleSelectPlayer, players: this.state.serverData.Players, currentlySelectedPlayer: this.state.targetPlayer }),
+                    React.createElement("button", { type: "button", className: "reset-btn btn btn-warning btn-lg", onClick: this.handleReset }, "Reset - Upload New File")),
+                React.createElement(timeline_1.default, { moments: this.state.serverData.Moments, targetPlayer: this.state.targetPlayer, players: this.state.serverData.Players }),
                 React.createElement(footer_1.default, null)));
         }
         else {
@@ -32483,6 +32621,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const react_dropzone_1 = __webpack_require__(/*! react-dropzone */ "./node_modules/react-dropzone/dist/es/index.js");
 const classnames_1 = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+__webpack_require__(/*! ../../css/file-uploader.css */ "./css/file-uploader.css");
 class FileUploader extends React.Component {
     constructor(props) {
         super(props);
@@ -32490,9 +32629,15 @@ class FileUploader extends React.Component {
             selectedFile: null,
             errorMsg: null,
         };
+        this.fileRef = React.createRef();
         // because javascript is terrible
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDrop = this.handleDrop.bind(this);
+        this.handleFileSelect = this.handleFileSelect.bind(this);
+    }
+    handleFileSelect(e) {
+        const files = this.fileRef.current.files;
+        this.handleDrop(files, []);
     }
     handleSubmit(e) {
         this.props.onFileUpload(this.state.selectedFile);
@@ -32531,6 +32676,10 @@ class FileUploader extends React.Component {
                             React.createElement("p", null, "Drop files here...") :
                             React.createElement("p", null, "Drag and Drop a Civ VI base version or Rise&Fall timeline JSON file to get started")));
                 }),
+            !this.state.selectedFile ?
+                React.createElement("form", { role: "form", className: "file-upload-form" },
+                    React.createElement("label", { htmlFor: "file" }, "Or select the file from disk"),
+                    React.createElement("input", { type: "file", name: "file", className: "btn", onChange: this.handleFileSelect, ref: this.fileRef, accept: ".json" })) : null,
             React.createElement("button", { type: "button", className: "upload-btn form-control btn btn-primary", disabled: this.state.errorMsg !== null || this.state.selectedFile === null, onClick: this.handleSubmit }, "Generate Timeline")));
     }
 }
@@ -32554,6 +32703,9 @@ class Footer extends React.Component {
     render() {
         return (React.createElement("footer", null,
             React.createElement("div", null, "Created by Daniel Kats - 2019"),
+            React.createElement("div", null,
+                "Limitations can be found ",
+                React.createElement("a", { href: "/about.html" }, "here")),
             React.createElement("div", null,
                 "Source code on ",
                 React.createElement("a", { href: "https://github.com/boompig/civ6-timeline" }, "GitHub"))));
@@ -32681,6 +32833,8 @@ exports.default = {
             };
         }
         else {
+            // this line is long on purpose, so have the linter ignore it
+            // tslint:disable-next-line
             pattern = /Let others say what they will, but the real flourishing of (.*?) Era culture began with the rise of (.*?) in (.*?).$/;
             match = moment.InstanceDescription.match(pattern);
             if (match) {
@@ -32853,6 +33007,7 @@ class Moment extends React.PureComponent {
         super(props);
         this.getName = this.getName.bind(this);
         this.getTooltipText = this.getTooltipText.bind(this);
+        this.getCivName = this.getCivName.bind(this);
     }
     getName() {
         const s = utils_1.StringToTitleCase(this.props.moment.Type.replace("MOMENT_", "").replace(/_/g, " "));
@@ -32934,8 +33089,17 @@ class Moment extends React.PureComponent {
             return "";
         }
     }
+    // NOTE: reused in player-selector.tsx
+    getCivName(player) {
+        // different data here if R&F or vanilla
+        const civName = player.CivilizationShortDescription.startsWith("LOC_CIVILIZATION_") ?
+            utils_1.StringToTitleCase(player.Civilization.replace("CIVILIZATION_", "")) :
+            player.CivilizationShortDescription;
+        return civName;
+    }
     render() {
         const name = this.getName();
+        const civName = this.getCivName(this.props.actingPlayer);
         let img = null;
         if (icons[this.props.moment.Type]) {
             img = React.createElement("img", { className: "icon", src: icons[this.props.moment.Type], alt: name });
@@ -32943,14 +33107,16 @@ class Moment extends React.PureComponent {
         const tooltipText = this.getTooltipText(this.props.moment);
         if (tooltipText) {
             return (React.createElement(react_tippy_1.Tooltip, { title: tooltipText },
-                React.createElement("div", { className: `moment ${this.props.moment.Type}`, key: `moment-${this.props.moment.Id}`, "data-tip": tooltipText },
+                React.createElement("div", { className: `moment ${this.props.moment.Type}`, key: `moment-${this.props.moment.Id}` },
                     img,
-                    React.createElement("span", null, name))));
+                    React.createElement("span", { className: "event-name" }, name),
+                    React.createElement("span", { className: "civ-name" }, civName))));
         }
         else {
-            return (React.createElement("div", { className: `moment ${this.props.moment.Type}`, key: `moment-${this.props.moment.Id}`, "data-tip": tooltipText },
+            return (React.createElement("div", { className: `moment ${this.props.moment.Type}`, key: `moment-${this.props.moment.Id}` },
                 img,
-                React.createElement("span", null, name)));
+                React.createElement("span", { className: "event-name" }, name),
+                React.createElement("span", { className: "civ-name" }, civName)));
         }
     }
 }
@@ -32988,6 +33154,7 @@ class PlayerSelector extends React.Component {
         super(props);
         this.handleSelect = this.handleSelect.bind(this);
         this.getPlayerType = this.getPlayerType.bind(this);
+        this.getCivName = this.getCivName.bind(this);
     }
     handleSelect(playerIndex) {
         console.log(playerIndex);
@@ -33012,10 +33179,20 @@ class PlayerSelector extends React.Component {
             return PlayerType.MAJOR_CIV;
         }
     }
+    // NOTE: reused in moment.tsx
+    getCivName(player) {
+        // different data here if R&F or vanilla
+        const civName = player.CivilizationShortDescription.startsWith("LOC_CIVILIZATION_") ?
+            utils_1.StringToTitleCase(player.Civilization.replace("CIVILIZATION_", "")) :
+            player.CivilizationShortDescription;
+        return civName;
+    }
     render() {
         let playerElems = [];
-        let activeClass = (this.props.currentlySelectedPlayer === -1 ? "active" : "");
-        playerElems.push(React.createElement("button", { className: `btn btn-secondary player ${activeClass}`, onClick: (e) => this.handleSelect(-1), key: "all-players" }, "All Players"));
+        // let activeClass = (this.props.currentlySelectedPlayer === -1 ? "active": "");
+        playerElems.push(React.createElement("option", { 
+            // className={`btn btn-secondary player ${activeClass}`}
+            onClick: (e) => this.handleSelect(-1), key: "all-players" }, "All Players"));
         for (let player of this.props.players) {
             let playerType = this.getPlayerType(player);
             if (playerType === PlayerType.FREE_CITY ||
@@ -33024,19 +33201,17 @@ class PlayerSelector extends React.Component {
                 // ignore everything but humans and major civs
                 continue;
             }
-            activeClass = (player.Id === this.props.currentlySelectedPlayer ? "active" : "");
-            // different data here if R&F or vanilla
-            let civName = player.CivilizationShortDescription.startsWith("LOC_CIVILIZATION_") ?
-                utils_1.StringToTitleCase(player.Civilization.replace("CIVILIZATION_", "")) :
-                player.CivilizationShortDescription;
-            playerElems.push(React.createElement("button", { className: `btn btn-secondary player ${activeClass}`, onClick: (e) => this.handleSelect(player.Id), key: `player-${player.Id}` },
-                React.createElement("span", null, civName),
-                React.createElement("span", null,
-                    "(",
-                    playerType === PlayerType.HUMAN ? "You" : "AI",
-                    ")")));
+            // activeClass = (player.Id === this.props.currentlySelectedPlayer ? "active": "");
+            let civName = this.getCivName(player);
+            playerElems.push(React.createElement("option", { 
+                // className={`btn btn-secondary player ${activeClass}`}
+                onClick: (e) => this.handleSelect(player.Id), key: `player-${player.Id}` },
+                civName,
+                "\u00A0 (",
+                playerType === PlayerType.HUMAN ? "You" : "AI",
+                ")"));
         }
-        return React.createElement("div", { className: "btn-group player-selector", role: "group", "aria-label": "player selector" }, playerElems);
+        return React.createElement("select", { className: "custom-select player-selector" }, playerElems);
     }
 }
 exports.default = PlayerSelector;
@@ -33056,6 +33231,7 @@ exports.default = PlayerSelector;
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const moment_1 = __webpack_require__(/*! ./moment */ "./src/components/moment.tsx");
+__webpack_require__(/*! ../../css/timeline.css */ "./css/timeline.css");
 class Timeline extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -33083,13 +33259,15 @@ class Timeline extends React.PureComponent {
         let turnElems = [];
         for (let turn in turnMap) {
             let moments = [];
-            moments.push(React.createElement("div", { className: "moment turn-number", key: `turn-number-${turn}` }, turn));
             for (let moment of turnMap[turn]) {
                 if (this.props.targetPlayer === -1 || moment.ActingPlayer === this.props.targetPlayer) {
-                    moments.push(React.createElement(moment_1.default, { moment: moment, key: `moment-${moment.Id}` }));
+                    moments.push(React.createElement(moment_1.default, { moment: moment, key: `moment-${moment.Id}`, actingPlayer: this.props.players[moment.ActingPlayer] }));
                 }
             }
-            let turnElem = (React.createElement("div", { className: "turn", key: `turn-${turn}` }, moments));
+            let turnElem = (React.createElement("div", { className: "turn", key: `turn-${turn}` },
+                React.createElement("div", { className: "turn-number-container" },
+                    React.createElement("div", { className: "turn-number", key: `turn-number-${turn}` }, turn)),
+                moments));
             turnElems.push(turnElem);
         }
         console.log("ready to render");

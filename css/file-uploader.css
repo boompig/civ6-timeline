@@ -21,3 +21,14 @@
 	margin-top: 2rem;
 	font-size: 1.1rem;
 }
+
+.file-upload-form {
+	margin-top: 1rem;
+	border: 1px solid black;
+	border-radius: 1%;
+	padding: 1rem;
+}
+
+.file-upload-form label {
+	display: block;
+}

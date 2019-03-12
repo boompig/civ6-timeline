@@ -1,12 +1,13 @@
 import * as React from "react";
 import 'react-tippy/dist/tippy.css';
 import { Tooltip } from 'react-tippy';
-import { IMoment } from "./interfaces";
+import { IMoment, IPlayer } from "./interfaces";
 import MomentParser from "./moment-text-parser";
 import { StringToTitleCase } from "./utils";
 
 interface IMomentProps {
 	moment: IMoment;
+	actingPlayer: IPlayer;
 }
 
 const icons = {
@@ -27,6 +28,7 @@ export default class Moment extends React.PureComponent<IMomentProps, {}> {
 
 		this.getName = this.getName.bind(this);
 		this.getTooltipText = this.getTooltipText.bind(this);
+		this.getCivName = this.getCivName.bind(this);
 	}
 
 	getName(): string {
@@ -91,8 +93,18 @@ export default class Moment extends React.PureComponent<IMomentProps, {}> {
 		}
 	}
 
+	// NOTE: reused in player-selector.tsx
+	getCivName(player: IPlayer): string {
+		// different data here if R&F or vanilla
+		const civName = player.CivilizationShortDescription.startsWith("LOC_CIVILIZATION_") ?
+			StringToTitleCase(player.Civilization.replace("CIVILIZATION_", "")):
+			player.CivilizationShortDescription;
+		return civName
+	}
+
 	render() {
 		const name = this.getName();
+		const civName = this.getCivName(this.props.actingPlayer);
 		let img = null;
 		if(icons[this.props.moment.Type]) {
 			img = <img className="icon" src={ icons[this.props.moment.Type] } alt={ name } />
@@ -100,17 +112,19 @@ export default class Moment extends React.PureComponent<IMomentProps, {}> {
 		const tooltipText = this.getTooltipText(this.props.moment);
 		if(tooltipText) {
 			return (<Tooltip title={ tooltipText }>
-				<div className={ `moment ${this.props.moment.Type}` } key={ `moment-${this.props.moment.Id}` }
-					data-tip={ tooltipText }>
+				<div className={ `moment ${this.props.moment.Type}` }
+					key={`moment-${this.props.moment.Id}`} >
 					{ img }
-					<span>{ name }</span>
+					<span className="event-name">{ name }</span>
+					<span className="civ-name">{ civName }</span>
 				</div>
 			</Tooltip>);
 		} else {
-			return (<div className={ `moment ${this.props.moment.Type}` } key={ `moment-${this.props.moment.Id}` }
-				data-tip={ tooltipText }>
+			return (<div className={ `moment ${this.props.moment.Type}` }
+				key={`moment-${this.props.moment.Id}`} >
 				{ img }
-				<span>{ name }</span>
+				<span className="event-name">{ name }</span>
+				<span className="civ-name">{ civName }</span>
 			</div>);
 		}
 	}
