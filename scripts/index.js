@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // imports
 const path = require("path");
 const fs = require("fs");
@@ -14,7 +16,13 @@ function readFile(fname) {
 }
 
 function main() {
-    const argv = minimist(process.argv.slice(2));
+	const argv = minimist(process.argv.slice(2));
+
+	if(argv.help) {
+		let script = path.basename(process.argv[1]);
+		console.log(`Usage: ${script} -f <filename> [--moments] [--players]`);
+		return;
+	}
 
 	if(!argv.f) {
 		throw new Error("-f argument is required");
