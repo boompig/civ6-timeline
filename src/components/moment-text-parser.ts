@@ -17,9 +17,15 @@ interface ITech {
 }
 
 interface ICivic {
-	civ: string;
+	civ?: string;
 	civic: string;
 	era: string;
+}
+
+interface IForwardSettle {
+	otherCiv: string;
+	otherCity: string;
+	yourCity: string;
 }
 
 /*
@@ -148,6 +154,28 @@ export default {
 	},
 
 	/**
+	 * Moment: MOMENT_CIVIC_CULTURVATED_IN_ERA_FIRST_IN_WORLD
+	 * Patterns:
+	 *
+	 * - Our expression of Nationalism will define humanity's future in the Industrial Era!
+	 * - Our expression of Feudalism will define humanity's future in the Medieval Era!
+	 *
+	 * etc
+	 */
+	parseCivicResearchedInEraFirstInWorld: (moment: IMoment): ICivic => {
+		const pattern = /Our expression of (.*?) will define humanity's future in the (.*?) Era!/;
+		const match = moment.InstanceDescription.match(pattern);
+		if (match) {
+			return {
+				civic: match[1],
+				era: match[2],
+			};
+		} else {
+			throw new Error(`Match failed on string: ${moment.InstanceDescription}`);
+		}
+	},
+
+	/**
 	 * @returns the name of the government
 	 */
 	parseGovernmentTier1: (moment: IMoment): string => {
@@ -230,7 +258,7 @@ export default {
 
 	/**
 	 * Moment: MOMENT_PLAYER_GAVE_ENVOY_BECAME_SUZERAIN_FIRST_IN_WORLD
-	 * @returns the name of the City-State
+	 * @returns {string} the name of the City-State
 	 */
 	parseSuzerain: (moment: IMoment): string => {
 		const pattern = /The rulers of (.*?) bow/;
@@ -240,7 +268,7 @@ export default {
 
 	/**
 	 * Moment: MOMENT_PLAYER_GAVE_ENVOY_CANCELED_SUZERAIN_DURING_WAR
-	 * @returns the name of the City-State
+	 * @returns {string} the name of the City-State
 	 */
 	parseEnvoyCanceledDuringWar: (moment: IMoment): string => {
 		// this line is long on purpose, so have the linter ignore it
@@ -252,15 +280,8 @@ export default {
 	},
 
 	/**
-	 * Moment: MOMENT_PANTHEON_FOUNDED
-	 */
-	parsePantheon: (moment: IMoment): string => {
-		throw new Error("Pantheon not found");
-	},
-
-	/**
 	 * Moment: MOMENT_RELIGION_FOUNDED_FIRST_IN_WORLD
-	 * @returns name of the religion
+	 * @returns {string} name of the religion
 	 */
 	parseReligionFoundedFirstInWorld: (moment: IMoment): string => {
 		const pattern = /It is said that when (.*?) founded (.*?),/;
@@ -275,6 +296,76 @@ export default {
 	 */
 	parseReligionFounded: (moment: IMoment): string => {
 		const pattern = /(.*?) is the true path of salvation!/;
+		const match = moment.InstanceDescription.match(pattern);
+		return match[1];
+	},
+
+	/**
+	 * Moment: MOMENT_IMPROVEMENT_CONSTRUCTED_FIRST_UNIQUE
+	 */
+	parseImprovementConstructedFirstUnique: (moment: IMoment): string => {
+		// this line is long on purpose, so have the linter ignore it
+		// tslint:disable-next-line
+		const pattern = /Truly, this (.*?) represents our civilization's spirit and defines the landscape of our empire/;
+		const match = moment.InstanceDescription.match(pattern);
+		return match[1];
+	},
+
+	/**
+	 * Moment: MOMENT_DISTRICT_CONSTRUCTED_HIGH_ADJACENCY_HOLY_SITE
+	 * @returns {string} city name
+	 */
+	parseDistrictConstructedHighAdjacencyHolySite: (moment: IMoment): string => {
+		// this line is long on purpose, so have the linter ignore it
+		// tslint:disable-next-line
+		const pattern = /Chimes and chanting, incense and icon, the Holy Site of (.*?) brings worshippers and pilgrims into contemplation of the higher matters./;
+		const match = moment.InstanceDescription.match(pattern);
+		return match[1];
+	},
+
+	/**
+	 * Moment: MOMENT_CITY_BUILT_NEAR_OTHER_CIV_CITY
+	 */
+	parseCityBuiltNearOtherCivCity: (moment: IMoment): IForwardSettle => {
+		// this line is long on purpose, so have the linter ignore it
+		// tslint:disable-next-line
+		const pattern = /The bureaucrats of (.*?) are piqued by our boldness in settling (.*?) so near their own city of (.*?)./;
+		const match = moment.InstanceDescription.match(pattern);
+		return {
+			otherCity: match[3],
+			otherCiv: match[1],
+			yourCity: match[2],
+		};
+	},
+
+	/**
+	 * Moment: MOMENT_TRADING_POST_CONSTRUCTED_IN_OTHER_CIV
+	 * Examples:
+	 *
+	 * - Dusty and tired but eager to haggle, merchants open our first Trading Post in the lands of Kongo.
+	 *
+	 * @returns {string} name of other civ
+	 */
+	parseTradingPostConstructedInOtherCiv: (moment: IMoment): string => {
+		// this line is long on purpose, so have the linter ignore it
+		// tslint:disable-next-line
+		const pattern = /Dusty and tired but eager to haggle, merchants open our first Trading Post in the lands of (.*?)./;
+		const match = moment.InstanceDescription.match(pattern);
+		return match[1];
+	},
+
+	/**
+	 * Moment: MOMENT_BARBARIAN_CAMP_DESTROYED_NEAR_YOUR_CITY
+	 * Examples:
+	 *
+	 * - The danger on the doorstep of Kutaisi has been defeated! The barbarians are driven away.
+	 *
+	 * @returns {string} name of city
+	 */
+	parseBarbarianCampDestroyedNearYourCity: (moment: IMoment): string => {
+		// this line is long on purpose, so have the linter ignore it
+		// tslint:disable-next-line
+		const pattern = /The danger on the doorstep of (.*?) has been defeated! The barbarians are driven away./;
 		const match = moment.InstanceDescription.match(pattern);
 		return match[1];
 	},

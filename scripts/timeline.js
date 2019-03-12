@@ -1,8 +1,5 @@
 /**
- * Expected format:
- * JSON with these top-level keys
- *  - Players
- *  - Moments
+ * For interface definitions see ./src/components/interfaces.ts
  */
 
  var module = (typeof(module) === "undefined" ? {} : module);
@@ -14,6 +11,8 @@ module.exports.getPlayers = (civObj) => {
 
 /**
  * Return a histogram of moments as a dictionary
+ * @param {ITimelineData} civObj
+ * @returns {IMoment[]}
  */
 module.exports.getMoments = (civObj) => {
     const moments = {};

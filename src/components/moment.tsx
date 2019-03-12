@@ -42,6 +42,16 @@ export default class Moment extends React.PureComponent<IMomentProps, {}> {
 		}
 	}
 
+	/**
+	 * Ignored moments (see about.html):
+	 *
+	 * - MOMENT_BATTLE_FOUGHT
+	 * - MOMENT_SHIP_SUNK
+	 * - MOMENT_GOODY_HUT_TRIGGERED
+	 * - MOMENT_PANTHEON_FOUNDED
+	 * - MOMENT_CITY_BUILT_ON_DESERT
+	 * - MOMENT_BARBARIAN_CAMP_DESTROYED
+	 */
 	getTooltipText(moment: IMoment): string {
 		if(moment.Type === "MOMENT_CITY_TRANSFERRED_FOREIGN_CAPITAL") {
 			const capital = MomentParser.parseForeignCapital(moment);
@@ -65,6 +75,9 @@ export default class Moment extends React.PureComponent<IMomentProps, {}> {
 		} else if(moment.Type === "MOMENT_CIVIC_CULTURVATED_IN_ERA_FIRST") {
 			const civic = MomentParser.parseCivicResearchedInEraFirst(moment);
 			return `${civic.civic} -> ${civic.era}`;
+		} else if(moment.Type === "MOMENT_CIVIC_CULTURVATED_IN_ERA_FIRST_IN_WORLD") {
+			const civic = MomentParser.parseCivicResearchedInEraFirstInWorld(moment);
+			return `${civic.civic} -> ${civic.era}`;
 		} else if(moment.Type === "MOMENT_GOVERNMENT_ENACTED_TIER_1_FIRST_IN_WORLD") {
 			return MomentParser.parseGovernmentTier1(moment);
 		} else if(moment.Type === "MOMENT_GOVERNMENT_ENACTED_TIER_2_FIRST_IN_WORLD") {
@@ -86,8 +99,17 @@ export default class Moment extends React.PureComponent<IMomentProps, {}> {
 			return MomentParser.parseReligionFounded(moment);
 		} else if (moment.Type === "MOMENT_RELIGION_FOUNDED_FIRST_IN_WORLD") {
 			return MomentParser.parseReligionFoundedFirstInWorld(moment);
-		// } else if (moment.Type === "MOMENT_PANTHEON_FOUNDED") {
-			// return MomentParser.parsePantheon(moment);
+		} else if (moment.Type === "MOMENT_IMPROVEMENT_CONSTRUCTED_FIRST_UNIQUE") {
+			return MomentParser.parseImprovementConstructedFirstUnique(moment);
+		} else if (moment.Type === "MOMENT_DISTRICT_CONSTRUCTED_HIGH_ADJACENCY_HOLY_SITE") {
+			return MomentParser.parseDistrictConstructedHighAdjacencyHolySite(moment);
+		} else if (moment.Type === "MOMENT_CITY_BUILT_NEAR_OTHER_CIV_CITY") {
+			const forwardSettle = MomentParser.parseCityBuiltNearOtherCivCity(moment);
+			return `${forwardSettle.yourCity} settled near ${forwardSettle.otherCiv}'s city of ${forwardSettle.otherCity}`;
+		} else if (moment.Type === "MOMENT_TRADING_POST_CONSTRUCTED_IN_OTHER_CIV") {
+			return MomentParser.parseTradingPostConstructedInOtherCiv(moment);
+		} else if (moment.Type === "MOMENT_BARBARIAN_CAMP_DESTROYED_NEAR_YOUR_CITY") {
+			return MomentParser.parseBarbarianCampDestroyedNearYourCity(moment);
 		} else {
 			return "";
 		}
@@ -106,22 +128,33 @@ export default class Moment extends React.PureComponent<IMomentProps, {}> {
 		const name = this.getName();
 		const civName = this.getCivName(this.props.actingPlayer);
 		let img = null;
+		let tooltipText = "";
 		if(icons[this.props.moment.Type]) {
 			img = <img className="icon" src={ icons[this.props.moment.Type] } alt={ name } />
 		}
-		const tooltipText = this.getTooltipText(this.props.moment);
+		try {
+			tooltipText = this.getTooltipText(this.props.moment);
+		} catch (e) {
+			// fail gracefully on parsing errors but log the errors to console
+			console.error(e);
+			tooltipText = "";
+		}
 		if(tooltipText) {
+			// NOTE: using data-tip for CSS cursor here
 			return (<Tooltip title={ tooltipText }>
 				<div className={ `moment ${this.props.moment.Type}` }
-					key={`moment-${this.props.moment.Id}`} >
+					key={`moment-${this.props.moment.Id}`}
+					data-tip={ tooltipText }>
 					{ img }
 					<span className="event-name">{ name }</span>
 					<span className="civ-name">{ civName }</span>
 				</div>
 			</Tooltip>);
 		} else {
+			// NOTE: using data-tip for CSS cursor here (must specify empty value)
 			return (<div className={ `moment ${this.props.moment.Type}` }
-				key={`moment-${this.props.moment.Id}`} >
+				key={`moment-${this.props.moment.Id}`}
+				data-tip="">
 				{ img }
 				<span className="event-name">{ name }</span>
 				<span className="civ-name">{ civName }</span>

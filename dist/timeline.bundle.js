@@ -32866,6 +32866,28 @@ exports.default = {
         }
     },
     /**
+     * Moment: MOMENT_CIVIC_CULTURVATED_IN_ERA_FIRST_IN_WORLD
+     * Patterns:
+     *
+     * - Our expression of Nationalism will define humanity's future in the Industrial Era!
+     * - Our expression of Feudalism will define humanity's future in the Medieval Era!
+     *
+     * etc
+     */
+    parseCivicResearchedInEraFirstInWorld: (moment) => {
+        const pattern = /Our expression of (.*?) will define humanity's future in the (.*?) Era!/;
+        const match = moment.InstanceDescription.match(pattern);
+        if (match) {
+            return {
+                civic: match[1],
+                era: match[2],
+            };
+        }
+        else {
+            throw new Error(`Match failed on string: ${moment.InstanceDescription}`);
+        }
+    },
+    /**
      * @returns the name of the government
      */
     parseGovernmentTier1: (moment) => {
@@ -32943,7 +32965,7 @@ exports.default = {
     },
     /**
      * Moment: MOMENT_PLAYER_GAVE_ENVOY_BECAME_SUZERAIN_FIRST_IN_WORLD
-     * @returns the name of the City-State
+     * @returns {string} the name of the City-State
      */
     parseSuzerain: (moment) => {
         const pattern = /The rulers of (.*?) bow/;
@@ -32952,7 +32974,7 @@ exports.default = {
     },
     /**
      * Moment: MOMENT_PLAYER_GAVE_ENVOY_CANCELED_SUZERAIN_DURING_WAR
-     * @returns the name of the City-State
+     * @returns {string} the name of the City-State
      */
     parseEnvoyCanceledDuringWar: (moment) => {
         // this line is long on purpose, so have the linter ignore it
@@ -32963,14 +32985,8 @@ exports.default = {
         return match[2];
     },
     /**
-     * Moment: MOMENT_PANTHEON_FOUNDED
-     */
-    parsePantheon: (moment) => {
-        throw new Error("Pantheon not found");
-    },
-    /**
      * Moment: MOMENT_RELIGION_FOUNDED_FIRST_IN_WORLD
-     * @returns name of the religion
+     * @returns {string} name of the religion
      */
     parseReligionFoundedFirstInWorld: (moment) => {
         const pattern = /It is said that when (.*?) founded (.*?),/;
@@ -32984,6 +33000,71 @@ exports.default = {
      */
     parseReligionFounded: (moment) => {
         const pattern = /(.*?) is the true path of salvation!/;
+        const match = moment.InstanceDescription.match(pattern);
+        return match[1];
+    },
+    /**
+     * Moment: MOMENT_IMPROVEMENT_CONSTRUCTED_FIRST_UNIQUE
+     */
+    parseImprovementConstructedFirstUnique: (moment) => {
+        // this line is long on purpose, so have the linter ignore it
+        // tslint:disable-next-line
+        const pattern = /Truly, this (.*?) represents our civilization's spirit and defines the landscape of our empire/;
+        const match = moment.InstanceDescription.match(pattern);
+        return match[1];
+    },
+    /**
+     * Moment: MOMENT_DISTRICT_CONSTRUCTED_HIGH_ADJACENCY_HOLY_SITE
+     * @returns {string} city name
+     */
+    parseDistrictConstructedHighAdjacencyHolySite: (moment) => {
+        // this line is long on purpose, so have the linter ignore it
+        // tslint:disable-next-line
+        const pattern = /Chimes and chanting, incense and icon, the Holy Site of (.*?) brings worshippers and pilgrims into contemplation of the higher matters./;
+        const match = moment.InstanceDescription.match(pattern);
+        return match[1];
+    },
+    /**
+     * Moment: MOMENT_CITY_BUILT_NEAR_OTHER_CIV_CITY
+     */
+    parseCityBuiltNearOtherCivCity: (moment) => {
+        // this line is long on purpose, so have the linter ignore it
+        // tslint:disable-next-line
+        const pattern = /The bureaucrats of (.*?) are piqued by our boldness in settling (.*?) so near their own city of (.*?)./;
+        const match = moment.InstanceDescription.match(pattern);
+        return {
+            otherCity: match[3],
+            otherCiv: match[1],
+            yourCity: match[2],
+        };
+    },
+    /**
+     * Moment: MOMENT_TRADING_POST_CONSTRUCTED_IN_OTHER_CIV
+     * Examples:
+     *
+     * - Dusty and tired but eager to haggle, merchants open our first Trading Post in the lands of Kongo.
+     *
+     * @returns {string} name of other civ
+     */
+    parseTradingPostConstructedInOtherCiv: (moment) => {
+        // this line is long on purpose, so have the linter ignore it
+        // tslint:disable-next-line
+        const pattern = /Dusty and tired but eager to haggle, merchants open our first Trading Post in the lands of (.*?)./;
+        const match = moment.InstanceDescription.match(pattern);
+        return match[1];
+    },
+    /**
+     * Moment: MOMENT_BARBARIAN_CAMP_DESTROYED_NEAR_YOUR_CITY
+     * Examples:
+     *
+     * - The danger on the doorstep of Kutaisi has been defeated! The barbarians are driven away.
+     *
+     * @returns {string} name of city
+     */
+    parseBarbarianCampDestroyedNearYourCity: (moment) => {
+        // this line is long on purpose, so have the linter ignore it
+        // tslint:disable-next-line
+        const pattern = /The danger on the doorstep of (.*?) has been defeated! The barbarians are driven away./;
         const match = moment.InstanceDescription.match(pattern);
         return match[1];
     },
@@ -33037,6 +33118,16 @@ class Moment extends React.PureComponent {
             return s;
         }
     }
+    /**
+     * Ignored moments (see about.html):
+     *
+     * - MOMENT_BATTLE_FOUGHT
+     * - MOMENT_SHIP_SUNK
+     * - MOMENT_GOODY_HUT_TRIGGERED
+     * - MOMENT_PANTHEON_FOUNDED
+     * - MOMENT_CITY_BUILT_ON_DESERT
+     * - MOMENT_BARBARIAN_CAMP_DESTROYED
+     */
     getTooltipText(moment) {
         if (moment.Type === "MOMENT_CITY_TRANSFERRED_FOREIGN_CAPITAL") {
             const capital = moment_text_parser_1.default.parseForeignCapital(moment);
@@ -33066,6 +33157,10 @@ class Moment extends React.PureComponent {
         }
         else if (moment.Type === "MOMENT_CIVIC_CULTURVATED_IN_ERA_FIRST") {
             const civic = moment_text_parser_1.default.parseCivicResearchedInEraFirst(moment);
+            return `${civic.civic} -> ${civic.era}`;
+        }
+        else if (moment.Type === "MOMENT_CIVIC_CULTURVATED_IN_ERA_FIRST_IN_WORLD") {
+            const civic = moment_text_parser_1.default.parseCivicResearchedInEraFirstInWorld(moment);
             return `${civic.civic} -> ${civic.era}`;
         }
         else if (moment.Type === "MOMENT_GOVERNMENT_ENACTED_TIER_1_FIRST_IN_WORLD") {
@@ -33098,8 +33193,22 @@ class Moment extends React.PureComponent {
         }
         else if (moment.Type === "MOMENT_RELIGION_FOUNDED_FIRST_IN_WORLD") {
             return moment_text_parser_1.default.parseReligionFoundedFirstInWorld(moment);
-            // } else if (moment.Type === "MOMENT_PANTHEON_FOUNDED") {
-            // return MomentParser.parsePantheon(moment);
+        }
+        else if (moment.Type === "MOMENT_IMPROVEMENT_CONSTRUCTED_FIRST_UNIQUE") {
+            return moment_text_parser_1.default.parseImprovementConstructedFirstUnique(moment);
+        }
+        else if (moment.Type === "MOMENT_DISTRICT_CONSTRUCTED_HIGH_ADJACENCY_HOLY_SITE") {
+            return moment_text_parser_1.default.parseDistrictConstructedHighAdjacencyHolySite(moment);
+        }
+        else if (moment.Type === "MOMENT_CITY_BUILT_NEAR_OTHER_CIV_CITY") {
+            const forwardSettle = moment_text_parser_1.default.parseCityBuiltNearOtherCivCity(moment);
+            return `${forwardSettle.yourCity} settled near ${forwardSettle.otherCiv}'s city of ${forwardSettle.otherCity}`;
+        }
+        else if (moment.Type === "MOMENT_TRADING_POST_CONSTRUCTED_IN_OTHER_CIV") {
+            return moment_text_parser_1.default.parseTradingPostConstructedInOtherCiv(moment);
+        }
+        else if (moment.Type === "MOMENT_BARBARIAN_CAMP_DESTROYED_NEAR_YOUR_CITY") {
+            return moment_text_parser_1.default.parseBarbarianCampDestroyedNearYourCity(moment);
         }
         else {
             return "";
@@ -33117,19 +33226,29 @@ class Moment extends React.PureComponent {
         const name = this.getName();
         const civName = this.getCivName(this.props.actingPlayer);
         let img = null;
+        let tooltipText = "";
         if (icons[this.props.moment.Type]) {
             img = React.createElement("img", { className: "icon", src: icons[this.props.moment.Type], alt: name });
         }
-        const tooltipText = this.getTooltipText(this.props.moment);
+        try {
+            tooltipText = this.getTooltipText(this.props.moment);
+        }
+        catch (e) {
+            // fail gracefully on parsing errors but log the errors to console
+            console.error(e);
+            tooltipText = "";
+        }
         if (tooltipText) {
+            // NOTE: using data-tip for CSS cursor here
             return (React.createElement(react_tippy_1.Tooltip, { title: tooltipText },
-                React.createElement("div", { className: `moment ${this.props.moment.Type}`, key: `moment-${this.props.moment.Id}` },
+                React.createElement("div", { className: `moment ${this.props.moment.Type}`, key: `moment-${this.props.moment.Id}`, "data-tip": tooltipText },
                     img,
                     React.createElement("span", { className: "event-name" }, name),
                     React.createElement("span", { className: "civ-name" }, civName))));
         }
         else {
-            return (React.createElement("div", { className: `moment ${this.props.moment.Type}`, key: `moment-${this.props.moment.Id}` },
+            // NOTE: using data-tip for CSS cursor here (must specify empty value)
+            return (React.createElement("div", { className: `moment ${this.props.moment.Type}`, key: `moment-${this.props.moment.Id}`, "data-tip": "" },
                 img,
                 React.createElement("span", { className: "event-name" }, name),
                 React.createElement("span", { className: "civ-name" }, civName)));
