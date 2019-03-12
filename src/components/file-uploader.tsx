@@ -69,7 +69,7 @@ export default class FileUploader extends React.Component<IFileUploaderProps, IF
 									<input {...getInputProps()} />
 									{ isDragActive ?
 										<p>Drop files here...</p> :
-										<p>Upload a Civ VI Rise&Fall timeline file to get started</p>
+										<p>Drag and Drop a Civ VI base version or Rise&Fall timeline JSON file to get started</p>
 									}
 								</div>
 							)
