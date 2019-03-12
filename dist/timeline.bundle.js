@@ -32594,7 +32594,7 @@ class App extends React.Component {
             return (React.createElement("div", null,
                 React.createElement("div", { className: "control-container" },
                     React.createElement(player_selector_1.default, { onSelectPlayer: this.handleSelectPlayer, players: this.state.serverData.Players, currentlySelectedPlayer: this.state.targetPlayer }),
-                    React.createElement("button", { type: "button", className: "reset-btn btn btn-warning btn-lg", onClick: this.handleReset }, "Reset - Upload New File")),
+                    React.createElement("button", { type: "button", className: "reset-btn btn btn-primary", onClick: this.handleReset }, "Reset - Upload New File")),
                 React.createElement(timeline_1.default, { moments: this.state.serverData.Moments, targetPlayer: this.state.targetPlayer, players: this.state.serverData.Players }),
                 React.createElement(footer_1.default, null)));
         }

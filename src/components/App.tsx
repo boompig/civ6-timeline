@@ -162,7 +162,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
 							players={this.state.serverData.Players}
 							currentlySelectedPlayer={this.state.targetPlayer}></PlayerSelector>
 						<button type="button"
-							className="reset-btn btn btn-warning btn-lg"
+							className="reset-btn btn btn-primary"
 							onClick={this.handleReset}
 						>Reset - Upload New File</button>
 					</div>
