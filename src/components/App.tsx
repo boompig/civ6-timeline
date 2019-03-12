@@ -62,6 +62,15 @@ export default class App extends React.Component<IAppProps, IAppState> {
 	componentDidMount() {
 		this.loadData();
 	}
+
+	// NOTE: uncomment the section below to quickly test the appearance of the progress bar
+	componentDidMount() {
+		console.log("Go!");
+		this.setState({
+			isFileUploaded: true,
+			serverData: null
+		});
+	}
 	*/
 
 	handleReset() {
@@ -145,11 +154,23 @@ export default class App extends React.Component<IAppProps, IAppState> {
 				</div>
 			);
 		} else if (this.state.isFileUploaded && !this.state.errorMsg && !this.state.serverData) {
-			return (<div className="progress-container">
-				<div>Parsing...</div>
-				<div className="progress">
-					<div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-						aria-valuenow={50} aria-valuemin={0} aria-valuemax={100}></div>
+			// TODO: this is an arbitrary number that just gives the user a sense of progress
+			// out of 100
+			let progress = 35;
+			let progressStyle = {
+				width: `${progress}%`
+			};
+			return (<div>
+				<div className="progress-container">
+					<div>Parsing...</div>
+					<div className="progress">
+						<div className="progress-bar progress-bar-striped progress-bar-animated"
+							role="progressbar"
+							style={progressStyle}
+							aria-valuenow={progress}
+							aria-valuemin={0}
+							aria-valuemax={100}></div>
+					</div>
 				</div>
 				<Footer />
 			</div>);

@@ -25,7 +25,8 @@ select.player-selector {
 
 .progress-container {
 	max-width: 768px;
-	margin: 1rem auto;
+	margin: 30% auto 30% auto;
+	font-size: 1.2rem;
 }
 
 footer {

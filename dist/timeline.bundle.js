@@ -258,7 +258,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "/**\n * Handles styling for App.tsx\n */\n\nhtml, body {\n\tfont-size: 1rem;\n\tfont-family: Helvetica, Arial, sans-serif;\n}\n\n.control-container {\n\tmargin: 1rem auto;\n\tdisplay: block;\n\ttext-align: center;\n}\n\nselect.player-selector {\n\tmax-width: 400px;\n\tdisplay: inline-block;\n\tmargin-right: 2rem;\n}\n\n.reset-btn {\n\tdisplay: inline-block;\n}\n\n.progress-container {\n\tmax-width: 768px;\n\tmargin: 1rem auto;\n}\n\nfooter {\n\tcolor: grey;\n\tmargin: 0 auto;\n\ttext-align: center;\n\tfont-size: .85rem;\n}", ""]);
+exports.push([module.i, "/**\n * Handles styling for App.tsx\n */\n\nhtml, body {\n\tfont-size: 1rem;\n\tfont-family: Helvetica, Arial, sans-serif;\n}\n\n.control-container {\n\tmargin: 1rem auto;\n\tdisplay: block;\n\ttext-align: center;\n}\n\nselect.player-selector {\n\tmax-width: 400px;\n\tdisplay: inline-block;\n\tmargin-right: 2rem;\n}\n\n.reset-btn {\n\tdisplay: inline-block;\n}\n\n.progress-container {\n\tmax-width: 768px;\n\tmargin: 30% auto 30% auto;\n\tfont-size: 1.2rem;\n}\n\nfooter {\n\tcolor: grey;\n\tmargin: 0 auto;\n\ttext-align: center;\n\tfont-size: .85rem;\n}", ""]);
 
 
 
@@ -32509,6 +32509,15 @@ class App extends React.Component {
     componentDidMount() {
         this.loadData();
     }
+
+    // NOTE: uncomment the section below to quickly test the appearance of the progress bar
+    componentDidMount() {
+        console.log("Go!");
+        this.setState({
+            isFileUploaded: true,
+            serverData: null
+        });
+    }
     */
     handleReset() {
         window.location.reload();
@@ -32584,10 +32593,17 @@ class App extends React.Component {
                 React.createElement("button", { type: "button", className: "reset-btn btn btn-warning btn-lg", onClick: this.handleReset }, "Reset")));
         }
         else if (this.state.isFileUploaded && !this.state.errorMsg && !this.state.serverData) {
-            return (React.createElement("div", { className: "progress-container" },
-                React.createElement("div", null, "Parsing..."),
-                React.createElement("div", { className: "progress" },
-                    React.createElement("div", { className: "progress-bar progress-bar-striped progress-bar-animated", role: "progressbar", "aria-valuenow": 50, "aria-valuemin": 0, "aria-valuemax": 100 })),
+            // TODO: this is an arbitrary number that just gives the user a sense of progress
+            // out of 100
+            let progress = 35;
+            let progressStyle = {
+                width: `${progress}%`
+            };
+            return (React.createElement("div", null,
+                React.createElement("div", { className: "progress-container" },
+                    React.createElement("div", null, "Parsing..."),
+                    React.createElement("div", { className: "progress" },
+                        React.createElement("div", { className: "progress-bar progress-bar-striped progress-bar-animated", role: "progressbar", style: progressStyle, "aria-valuenow": progress, "aria-valuemin": 0, "aria-valuemax": 100 }))),
                 React.createElement(footer_1.default, null)));
         }
         else if (this.state.serverData) {
