@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Civ 6 Timeline | About</title>
+
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<main class="container">
+		<h1 class="display-1">About</h1>
+
+		<p>I used to play a lot of chess, and part of getting better was analyzing your past games.
+			Getting better at Civ6 is hard, in part because games are long, and identifying areas of improvement is not always obvious.
+			For a while, I plateaued at Immortal - I could win all my Immortal games but not a single game at Deity (at least without cheating).
+			I tried to figure out what separates the expert players on YouTube or Reddit from myself, but I couldn't point to a single thing.
+			During my past few Civ games, I took extensive notes on what I did and why, what my opponent was doing at the time, etc.
+			These notes really helped me improve, because I could point to specific mistakes in my gameplay.
+			Helpful, but also tedious.
+		</p>
+
+		<p>Civ6 itself records the game, and generates a timeline file for export. You can find it in <code>C:\Users\<USER>\Documents\My Games\Sid Meier's Civilization VI\GameSummary</code>.
+			It works similarly to the <a href="https://en.wikipedia.org/wiki/Portable_Game_Notation">PGN</a> file in online chess - it records all your actions in a text format, so you can analyze the game later.
+			I wrote a program to visualize these files, so you can see what you did and when, and hopefully that will help you improve.
+		</p>
+
+		<p><a href="https://github.com/boompig/civ6-timeline">The code is free and open source</a> so anyone can take this and improve on it.
+			I've also <a href="https://civ6-timeline.github.io">set up a website</a> where this program is deployed.</p>
+
+		<h2 class="display-4">Future Work</h2>
+
+		<p>If the Civ6 community likes this idea, I will add the following features, which I think are useful:</p>
+
+		<ul>
+			<li><strong>Sharable timelines</strong> Upload your timeline and get a link so you can directly share the timeline with friends or on Reddit/message boards</li>
+			<li><strong>Annotations</strong> Chess players like to add notes to certain moves after their games. This would allow players to add notes to themselves or reviewers about their thoughts directly into the timeline</li>
+		</ul>
+
+		<p>Or possibly other features suggested by folks on Reddit, if it's not too difficult and technically possible (the timeline file is missing a lot of info).</p>
+
+		<h2 class="display-4">Limitations</h2>
+
+		<ul>
+			<li>Battles are not annotated with which civilizations participated in those battles. You can infer it from DOW information sometimes, but not always.</li>
+		</ul>
+	</main>
+</body>
+</html>
