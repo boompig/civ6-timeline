@@ -1,8 +1,5 @@
 import * as React from "react";
 import { IMoment } from "./interfaces";
-import { StringToTitleCase } from "./utils";
-import MomentParser from "./moment-text-parser";
-import * as ReactTooltip from "react-tooltip";
 import Moment from "./moment";
 
 interface ITimelineProps {

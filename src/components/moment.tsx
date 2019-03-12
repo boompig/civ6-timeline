@@ -1,5 +1,6 @@
 import * as React from "react";
-import * as ReactTooltip from "react-tooltip";
+import 'react-tippy/dist/tippy.css';
+import { Tooltip } from 'react-tippy';
 import { IMoment } from "./interfaces";
 import MomentParser from "./moment-text-parser";
 import { StringToTitleCase } from "./utils";
@@ -97,11 +98,20 @@ export default class Moment extends React.PureComponent<IMomentProps, {}> {
 			img = <img className="icon" src={ icons[this.props.moment.Type] } alt={ name } />
 		}
 		const tooltipText = this.getTooltipText(this.props.moment);
-		return (<div className={ `moment ${this.props.moment.Type}` } key={ `moment-${this.props.moment.Id}` }
-			data-tip={ tooltipText }>
-			{ img }
-			<span>{ name }</span>
-			{ tooltipText ? <ReactTooltip />: null }
-		</div>);
+		if(tooltipText) {
+			return (<Tooltip title={ tooltipText }>
+				<div className={ `moment ${this.props.moment.Type}` } key={ `moment-${this.props.moment.Id}` }
+					data-tip={ tooltipText }>
+					{ img }
+					<span>{ name }</span>
+				</div>
+			</Tooltip>);
+		} else {
+			return (<div className={ `moment ${this.props.moment.Type}` } key={ `moment-${this.props.moment.Id}` }
+				data-tip={ tooltipText }>
+				{ img }
+				<span>{ name }</span>
+			</div>);
+		}
 	}
 }
