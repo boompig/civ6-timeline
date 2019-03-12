@@ -51,8 +51,9 @@ img.icon {
 .moment {
 	border: 1px solid black;
 	padding: .5rem;
-	margin-top: 0;
-	margin-bottom: 0;
+	/* setting top and bottom margin for cases where moments wrap */
+	margin-top: .2rem;
+	margin-bottom: .2rem;
 	margin-right: .5rem;
 }
 
