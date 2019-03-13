@@ -258,7 +258,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "/**\n * Handles styling for App.tsx\n */\n\nhtml, body {\n\tfont-size: 1rem;\n\tfont-family: Helvetica, Arial, sans-serif;\n}\n\n.control-container {\n\tmargin: 1rem auto;\n\tdisplay: block;\n\ttext-align: center;\n}\n\nselect.player-selector {\n\tmax-width: 400px;\n\tdisplay: inline-block;\n\tmargin-right: 2rem;\n}\n\n.reset-btn {\n\tdisplay: inline-block;\n}\n\n.progress-container {\n\tmax-width: 768px;\n\tmargin: 30% auto 30% auto;\n\tfont-size: 1.2rem;\n}\n\nfooter {\n\tcolor: grey;\n\tmargin: 0 auto;\n\ttext-align: center;\n\tfont-size: .85rem;\n}", ""]);
+exports.push([module.i, "/**\n * Handles styling for App.tsx\n */\n\nhtml, body {\n\tfont-size: 1rem;\n\tfont-family: Helvetica, Arial, sans-serif;\n}\n\n.control-container {\n\tmargin: 1rem auto;\n\tdisplay: block;\n\ttext-align: center;\n}\n\nselect.player-selector {\n\tmax-width: 400px;\n\tdisplay: inline-block;\n\tmargin-right: 2rem;\n}\n\n.reset-btn {\n\tdisplay: inline-block;\n}\n\n.progress-container {\n\tmax-width: 768px;\n\tmargin: 30% auto 30% auto;\n\tfont-size: 1.2rem;\n}\n\nfooter {\n\tcolor: grey;\n\tmargin: 0 auto;\n\ttext-align: center;\n\tfont-size: .85rem;\n\t/* 5% of viewport height */\n\tmargin-top: 4vh;\n}\n\n/*\n@media(min-height: 750px) {\n\tfooter {\n\t\tposition: absolute;\n\t\tright: 0;\n\t\tbottom: 1rem;\n\t\tleft: 0;\n\t}\n}\n*/", ""]);
 
 
 
@@ -273,7 +273,7 @@ exports.push([module.i, "/**\n * Handles styling for App.tsx\n */\n\nhtml, body 
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".file-uploader {\n\tmax-width: 700px;\n\tmargin: 1rem auto;\n\t/* border: 1px solid black; */\n\t/* border-radius: 1%; */\n\tpadding: 3rem;\n}\n\n.file-uploader .upload-btn {\n\tmargin-top: 1rem;\n}\n\n.dropzone {\n\tborder: 2px dashed green;\n\theight: 400px;\n\twidth: 600px;\n}\n\n.dropzone p {\n\ttext-align: center;\n\tmargin-top: 20%;\n\tmargin-left: 10%;\n\tmargin-right: 10%;\n\tfont-size: 1.1rem;\n}\n\n.file-upload-form {\n\tmargin-top: 1rem;\n\tborder: 1px solid black;\n\tborder-radius: 1%;\n\tpadding: 1rem;\n}\n\n.file-upload-form label {\n\tdisplay: block;\n\ttext-align: center;\n\tfont-size: 1.1rem;\n}", ""]);
+exports.push([module.i, ".file-uploader {\n\t/* set this to the same width as the dropzone */\n\tmax-width: 700px;\n\t/* center the container on the page */\n\t/* set margin-top relative to the page _height_ */\n\tmargin: 8vh auto 0 auto;\n\ttext-align: center;\n\t/* does not include footer */\n\theight: 100%;\n}\n\n.file-uploader .upload-btn {\n\tmargin-top: 1rem;\n}\n\n.dropzone {\n\tborder: 2px dashed green;\n\theight: 400px;\n\twidth: 700px;\n}\n\n.dropzone p {\n\ttext-align: center;\n\tmargin-top: 20%;\n\tmargin-left: 10%;\n\tmargin-right: 10%;\n\tfont-size: 1.1rem;\n}\n\n.file-upload-form {\n\tmargin-top: 1rem;\n\tborder: 1px solid black;\n\tborder-radius: 1%;\n\tpadding: 1rem;\n}\n\n.file-upload-form label {\n\tdisplay: block;\n\ttext-align: center;\n\tfont-size: 1.1rem;\n}", ""]);
 
 
 
@@ -32608,10 +32608,11 @@ class App extends React.Component {
         }
         else if (this.state.serverData) {
             return (React.createElement("div", null,
-                React.createElement("div", { className: "control-container" },
-                    React.createElement(player_selector_1.default, { onSelectPlayer: this.handleSelectPlayer, players: this.state.serverData.Players, currentlySelectedPlayer: this.state.targetPlayer }),
-                    React.createElement("button", { type: "button", className: "reset-btn btn btn-primary", onClick: this.handleReset }, "Reset - Upload New File")),
-                React.createElement(timeline_1.default, { moments: this.state.serverData.Moments, targetPlayer: this.state.targetPlayer, players: this.state.serverData.Players }),
+                React.createElement("div", null,
+                    React.createElement("div", { className: "control-container" },
+                        React.createElement(player_selector_1.default, { onSelectPlayer: this.handleSelectPlayer, players: this.state.serverData.Players, currentlySelectedPlayer: this.state.targetPlayer }),
+                        React.createElement("button", { type: "button", className: "reset-btn btn btn-primary", onClick: this.handleReset }, "Reset - Upload New File")),
+                    React.createElement(timeline_1.default, { moments: this.state.serverData.Moments, targetPlayer: this.state.targetPlayer, players: this.state.serverData.Players })),
                 React.createElement(footer_1.default, null)));
         }
         else {

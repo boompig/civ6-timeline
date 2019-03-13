@@ -175,7 +175,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
 				<Footer />
 			</div>);
 		} else if(this.state.serverData) {
-			return (
+			return (<div>
 				<div>
 					<div className="control-container">
 						<PlayerSelector
@@ -191,9 +191,9 @@ export default class App extends React.Component<IAppProps, IAppState> {
 						moments={ this.state.serverData.Moments }
 						targetPlayer={ this.state.targetPlayer }
 						players={ this.state.serverData.Players }></Timeline>
-					<Footer />
 				</div>
-			);
+				<Footer />
+			</div>);
 		} else {
 			return this.renderDataNotLoaded();
 		}

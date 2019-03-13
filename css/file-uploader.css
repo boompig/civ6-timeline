@@ -1,9 +1,12 @@
 .file-uploader {
+	/* set this to the same width as the dropzone */
 	max-width: 700px;
-	margin: 1rem auto;
-	/* border: 1px solid black; */
-	/* border-radius: 1%; */
-	padding: 3rem;
+	/* center the container on the page */
+	/* set margin-top relative to the page _height_ */
+	margin: 8vh auto 0 auto;
+	text-align: center;
+	/* does not include footer */
+	height: 100%;
 }
 
 .file-uploader .upload-btn {
@@ -13,7 +16,7 @@
 .dropzone {
 	border: 2px dashed green;
 	height: 400px;
-	width: 600px;
+	width: 700px;
 }
 
 .dropzone p {

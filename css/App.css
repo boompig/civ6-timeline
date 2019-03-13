@@ -34,4 +34,17 @@ footer {
 	margin: 0 auto;
 	text-align: center;
 	font-size: .85rem;
+	/* 5% of viewport height */
+	margin-top: 4vh;
 }
+
+/*
+@media(min-height: 750px) {
+	footer {
+		position: absolute;
+		right: 0;
+		bottom: 1rem;
+		left: 0;
+	}
+}
+*/
