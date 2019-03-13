@@ -273,7 +273,7 @@ exports.push([module.i, "/**\n * Handles styling for App.tsx\n */\n\nhtml, body 
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".file-uploader {\n\tmax-width: 700px;\n\tmargin: 1rem auto;\n\t/* border: 1px solid black; */\n\t/* border-radius: 1%; */\n\tpadding: 3rem;\n}\n\n.file-uploader .upload-btn {\n\tmargin-top: 1rem;\n}\n\n.dropzone {\n\tborder: 2px dashed green;\n\theight: 400px;\n\twidth: 600px;\n}\n\n.dropzone p {\n\ttext-align: center;\n\tmargin-top: 2rem;\n\tfont-size: 1.1rem;\n}\n\n.file-upload-form {\n\tmargin-top: 1rem;\n\tborder: 1px solid black;\n\tborder-radius: 1%;\n\tpadding: 1rem;\n}\n\n.file-upload-form label {\n\tdisplay: block;\n}", ""]);
+exports.push([module.i, ".file-uploader {\n\tmax-width: 700px;\n\tmargin: 1rem auto;\n\t/* border: 1px solid black; */\n\t/* border-radius: 1%; */\n\tpadding: 3rem;\n}\n\n.file-uploader .upload-btn {\n\tmargin-top: 1rem;\n}\n\n.dropzone {\n\tborder: 2px dashed green;\n\theight: 400px;\n\twidth: 600px;\n}\n\n.dropzone p {\n\ttext-align: center;\n\tmargin-top: 20%;\n\tmargin-left: 10%;\n\tmargin-right: 10%;\n\tfont-size: 1.1rem;\n}\n\n.file-upload-form {\n\tmargin-top: 1rem;\n\tborder: 1px solid black;\n\tborder-radius: 1%;\n\tpadding: 1rem;\n}\n\n.file-upload-form label {\n\tdisplay: block;\n\ttext-align: center;\n\tfont-size: 1.1rem;\n}", ""]);
 
 
 
@@ -32720,7 +32720,7 @@ class Footer extends React.Component {
         return (React.createElement("footer", null,
             React.createElement("div", null, "Created by Daniel Kats - 2019"),
             React.createElement("div", null,
-                "Limitations can be found ",
+                "Limitations and more information can be found ",
                 React.createElement("a", { href: "/about.html" }, "here")),
             React.createElement("div", null,
                 "Source code on ",
