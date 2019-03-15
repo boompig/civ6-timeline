@@ -32921,7 +32921,7 @@ class Footer extends React.Component {
             React.createElement("div", null, "Created by Daniel Kats - 2019"),
             React.createElement("div", null,
                 "Limitations and more information can be found ",
-                React.createElement("a", { href: "/about.html" }, "here")),
+                React.createElement("a", { href: "about.html" }, "here")),
             React.createElement("div", null,
                 "Source code on ",
                 React.createElement("a", { href: "https://github.com/boompig/civ6-timeline" }, "GitHub"))));
