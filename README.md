@@ -2,6 +2,8 @@
 
 Civ 6 generates a timeline file at the end of the game. This visualizes an uploaded file.
 
+The demo can be found [here](https://boompig.github.io/civ6-timeline). Limitations and ideas for future work are documented [here](https://boompig.github.io/civ6-timeline/about.html).
+
 ## Adding More Tooltips
 
 - use `scripts/index.js --histogram` to extract moments from target file
