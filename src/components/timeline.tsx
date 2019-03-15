@@ -2,7 +2,7 @@ import * as React from "react";
 import { IMoment, IPlayer } from "./interfaces";
 import Moment from "./moment";
 
-import '../../css/timeline.css';
+import "../../css/timeline.css";
 
 interface ITimelineProps {
 	targetPlayer: number;
@@ -20,23 +20,23 @@ export default class Timeline extends React.PureComponent<ITimelineProps, ITimel
 		this.getTurnMap = this.getTurnMap.bind(this);
 	}
 
-	getTurnMap() {
+	public getTurnMap() {
 		const turnMap = {};
-		for(let moment of this.props.moments) {
+		for (const moment of this.props.moments) {
 			// don't add useless things to the turn map
 			// if(this.props.targetPlayer >= 0 && moment.ActingPlayer !== this.props.targetPlayer) {
-				// continue;
+			// continue;
 			// }
 
-			if(!turnMap[moment.Turn]) {
-				turnMap[moment.Turn] = []
+			if (!turnMap[moment.Turn]) {
+				turnMap[moment.Turn] = [];
 			}
 			turnMap[moment.Turn].push(moment);
 		}
 		return turnMap;
 	}
 
-	render() {
+	public render() {
 		console.log("Building turn map...");
 
 		// construct turnMap
@@ -44,25 +44,25 @@ export default class Timeline extends React.PureComponent<ITimelineProps, ITimel
 
 		console.log("constructing elements...");
 
-		let turnElems = [];
+		const turnElems = [];
 
-		for(let turn in turnMap) {
-			let moments = [];
+		for (const turn in turnMap) {
+			const moments = [];
 
-			for(let moment of turnMap[turn]) {
-				if(this.props.targetPlayer === -1 || moment.ActingPlayer === this.props.targetPlayer) {
+			for (const moment of turnMap[turn]) {
+				if (this.props.targetPlayer === -1 || moment.ActingPlayer === this.props.targetPlayer) {
 					moments.push(<Moment
 						moment={moment}
-						key={ `moment-${moment.Id}` }
-						actingPlayer={ this.props.players[moment.ActingPlayer] } />);
+						key={`moment-${moment.Id}`}
+						actingPlayer={this.props.players[moment.ActingPlayer]} />);
 				}
 			}
-			let turnElem = (
-				<div className="turn" key={ `turn-${turn}` }>
+			const turnElem = (
+				<div className="turn" key={`turn-${turn}`}>
 					<div className="turn-number-container">
 						<div className="turn-number" key={`turn-number-${turn}`}>{turn}</div>
 					</div>
-					{ moments }
+					{moments}
 				</div>
 			);
 			turnElems.push(turnElem);
@@ -71,7 +71,7 @@ export default class Timeline extends React.PureComponent<ITimelineProps, ITimel
 
 		return (
 			<div className="timeline">
-				{ turnElems }
+				{turnElems}
 			</div>
 		);
 	}

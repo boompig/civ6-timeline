@@ -4,8 +4,8 @@ import { StringToTitleCase } from "./utils";
 
 interface IPlayerSelectorProps {
 	players: IPlayer[];
-	onSelectPlayer(playerIndex: number): void;
 	currentlySelectedPlayer: number;
+	onSelectPlayer(playerIndex: number): void;
 }
 
 enum PlayerType {
@@ -14,7 +14,7 @@ enum PlayerType {
 	MAJOR_CIV = 3,
 	BARBARIANS = 4,
 	FREE_CITY = 5,
-};
+}
 
 /**
  * Allow selecting from among the MAJOR civilizations participating in this game
@@ -28,21 +28,21 @@ export default class PlayerSelector extends React.Component<IPlayerSelectorProps
 		this.getCivName = this.getCivName.bind(this);
 	}
 
-	handleSelect(playerIndex: number) {
+	public handleSelect(playerIndex: number) {
 		console.log(playerIndex);
 		this.props.onSelectPlayer(playerIndex);
 	}
 
-	getPlayerType(player: IPlayer): PlayerType {
-		if(player.Id === 0) {
+	public getPlayerType(player: IPlayer): PlayerType {
+		if (player.Id === 0) {
 			return PlayerType.HUMAN;
-		} else if(player.LeaderType.startsWith("LEADER_MINOR")) {
+		} else if (player.LeaderType.startsWith("LEADER_MINOR")) {
 			return PlayerType.CITY_STATE;
 		// R&F v Vanilla
-		} else if(player.LeaderName === "Barbarians" || player.LeaderName === "LOC_CIVILIZATION_BARBARIAN_NAME") {
+		} else if (player.LeaderName === "Barbarians" || player.LeaderName === "LOC_CIVILIZATION_BARBARIAN_NAME") {
 			return PlayerType.BARBARIANS;
 		// R&F v Vanilla
-		} else if(player.LeaderName === "Free Cities" || player.LeaderName === "LOC_CIVILIZATION_FREE_CITIES_NAME") {
+		} else if (player.LeaderName === "Free Cities" || player.LeaderName === "LOC_CIVILIZATION_FREE_CITIES_NAME") {
 			return PlayerType.FREE_CITY;
 		} else {
 			return PlayerType.MAJOR_CIV;
@@ -50,16 +50,16 @@ export default class PlayerSelector extends React.Component<IPlayerSelectorProps
 	}
 
 	// NOTE: reused in moment.tsx
-	getCivName(player: IPlayer): string {
+	public getCivName(player: IPlayer): string {
 		// different data here if R&F or vanilla
 		const civName = player.CivilizationShortDescription.startsWith("LOC_CIVILIZATION_") ?
-			StringToTitleCase(player.Civilization.replace("CIVILIZATION_", "")):
+			StringToTitleCase(player.Civilization.replace("CIVILIZATION_", "")) :
 			player.CivilizationShortDescription;
-		return civName
+		return civName;
 	}
 
-	render() {
-		let playerElems = [];
+	public render() {
+		const playerElems = [];
 		// let activeClass = (this.props.currentlySelectedPlayer === -1 ? "active": "");
 		playerElems.push(
 			<option
@@ -67,18 +67,18 @@ export default class PlayerSelector extends React.Component<IPlayerSelectorProps
 				onClick={(e) => this.handleSelect(-1)}
 				key="all-players">
 				All Players
-		</option>
+		</option>,
 		);
-		for(let player of this.props.players) {
-			let playerType = this.getPlayerType(player);
-			if(playerType === PlayerType.FREE_CITY ||
+		for (const player of this.props.players) {
+			const playerType = this.getPlayerType(player);
+			if (playerType === PlayerType.FREE_CITY ||
 				playerType === PlayerType.BARBARIANS ||
 				playerType === PlayerType.CITY_STATE) {
 				// ignore everything but humans and major civs
 				continue;
 			}
 			// activeClass = (player.Id === this.props.currentlySelectedPlayer ? "active": "");
-			let civName = this.getCivName(player);
+			const civName = this.getCivName(player);
 			playerElems.push(
 				<option
 					// className={`btn btn-secondary player ${activeClass}`}
@@ -86,7 +86,7 @@ export default class PlayerSelector extends React.Component<IPlayerSelectorProps
 					key={`player-${player.Id}`}>
 					{civName}&nbsp;
 					({playerType === PlayerType.HUMAN ? "You" : "AI"})
-				</option>
+				</option>,
 			);
 		}
 		return <select className="custom-select player-selector">

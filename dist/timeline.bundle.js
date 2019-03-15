@@ -258,7 +258,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "/**\n * Handles styling for App.tsx\n */\n\nhtml, body {\n\tfont-size: 1rem;\n\tfont-family: Helvetica, Arial, sans-serif;\n}\n\n.control-container {\n\tmargin: 1rem auto;\n\tdisplay: block;\n\ttext-align: center;\n}\n\nselect.player-selector {\n\tmax-width: 400px;\n\tdisplay: inline-block;\n\tmargin-right: 2rem;\n}\n\n.reset-btn {\n\tdisplay: inline-block;\n}\n\n.progress-container {\n\tmax-width: 768px;\n\tmargin: 30% auto 30% auto;\n\tfont-size: 1.2rem;\n}\n\nfooter {\n\tcolor: grey;\n\tmargin: 0 auto;\n\ttext-align: center;\n\tfont-size: .85rem;\n\t/* 5% of viewport height */\n\tmargin-top: 4vh;\n}\n\n/*\n@media(min-height: 750px) {\n\tfooter {\n\t\tposition: absolute;\n\t\tright: 0;\n\t\tbottom: 1rem;\n\t\tleft: 0;\n\t}\n}\n*/", ""]);
+exports.push([module.i, "/**\n * Handles styling for App.tsx\n */\n\nhtml, body {\n\tfont-size: 1rem;\n\tfont-family: Helvetica, Arial, sans-serif;\n}\n\nh1 {\n    text-align: center;\n}\n\n.control-container {\n\tmargin: 1rem auto;\n\tdisplay: block;\n\ttext-align: center;\n}\n\nselect.player-selector {\n\tmax-width: 400px;\n\tdisplay: inline-block;\n\tmargin-right: 2rem;\n}\n\n.reset-btn {\n\tdisplay: inline-block;\n}\n\n.progress-container {\n\tmax-width: 768px;\n\tmargin: 30% auto 30% auto;\n\tfont-size: 1.2rem;\n}\n\nfooter {\n\tcolor: grey;\n\tmargin: 0 auto;\n\ttext-align: center;\n\tfont-size: .85rem;\n\t/* 5% of viewport height */\n\tmargin-top: 4vh;\n}\n\n/*\n@media(min-height: 750px) {\n\tfooter {\n\t\tposition: absolute;\n\t\tright: 0;\n\t\tbottom: 1rem;\n\t\tleft: 0;\n\t}\n}\n*/", ""]);
 
 
 
@@ -273,7 +273,7 @@ exports.push([module.i, "/**\n * Handles styling for App.tsx\n */\n\nhtml, body 
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".file-uploader {\n\t/* set this to the same width as the dropzone */\n\tmax-width: 700px;\n\t/* center the container on the page */\n\t/* set margin-top relative to the page _height_ */\n\tmargin: 8vh auto 0 auto;\n\ttext-align: center;\n\t/* does not include footer */\n\theight: 100%;\n}\n\n.file-uploader .upload-btn {\n\tmargin-top: 1rem;\n}\n\n.dropzone {\n\tborder: 2px dashed green;\n\theight: 400px;\n\twidth: 700px;\n}\n\n.dropzone p {\n\ttext-align: center;\n\tmargin-top: 20%;\n\tmargin-left: 10%;\n\tmargin-right: 10%;\n\tfont-size: 1.1rem;\n}\n\n.file-upload-form {\n\tmargin-top: 1rem;\n\tborder: 1px solid black;\n\tborder-radius: 1%;\n\tpadding: 1rem;\n}\n\n.file-upload-form label {\n\tdisplay: block;\n\ttext-align: center;\n\tfont-size: 1.1rem;\n}", ""]);
+exports.push([module.i, ".file-uploader {\n\t/* set this to the same width as the dropzone */\n\tmax-width: 700px;\n\t/* center the container on the page */\n\t/* set margin-top relative to the page _height_ */\n\tmargin: 8vh auto 0 auto;\n\ttext-align: center;\n\t/* does not include footer */\n\theight: 100%;\n}\n\n.file-uploader .upload-btn {\n\tmargin-top: 1rem;\n}\n\n.dropzone {\n\tborder: 2px dashed green;\n\theight: 400px;\n\twidth: 700px;\n}\n\n.dropzone p {\n\ttext-align: center;\n\tmargin-top: 20%;\n\tmargin-left: 10%;\n\tmargin-right: 10%;\n\tfont-size: 1.1rem;\n}\n\n.file-upload-form {\n\tmargin-top: 1rem;\n\tborder: 1px solid black;\n\tborder-radius: 1%;\n\tpadding: 1rem;\n}\n\n.file-upload-form label {\n\tdisplay: block;\n\ttext-align: center;\n\tfont-size: 1.1rem;\n}\n\n.file-uploader a.btn {\n    margin-right: 1rem;\n}", ""]);
 
 
 
@@ -32464,10 +32464,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-const timeline_1 = __webpack_require__(/*! ./timeline */ "./src/components/timeline.tsx");
-const player_selector_1 = __webpack_require__(/*! ./player-selector */ "./src/components/player-selector.tsx");
+const constants_1 = __webpack_require__(/*! ./constants */ "./src/components/constants.ts");
 const file_uploader_1 = __webpack_require__(/*! ./file-uploader */ "./src/components/file-uploader.tsx");
 const footer_1 = __webpack_require__(/*! ./footer */ "./src/components/footer.tsx");
+const player_selector_1 = __webpack_require__(/*! ./player-selector */ "./src/components/player-selector.tsx");
+const progress_bar_1 = __webpack_require__(/*! ./progress-bar */ "./src/components/progress-bar.tsx");
+const timeline_1 = __webpack_require__(/*! ./timeline */ "./src/components/timeline.tsx");
 __webpack_require__(/*! ../../css/App.css */ "./css/App.css");
 class App extends React.Component {
     constructor(props) {
@@ -32475,23 +32477,74 @@ class App extends React.Component {
         this.state = {
             // data loaded from the server
             serverData: null,
+            // also data loaded from the server
+            metadata: null,
             // which player to show the timeline for
             targetPlayer: -1,
             // set to true iff the user has provided a file
             isFileUploaded: false,
+            // true when the data has been downloaded
+            // used for progress, because serverData not set until file has been parsed
+            isFileLoaded: false,
             // set when the file fails to parse
-            errorMsg: null
+            errorMsg: null,
         };
-        // this.loadData = this.loadData.bind(this);
+        this.loadDataByHash = this.loadDataByHash.bind(this);
         this.renderDataNotLoaded = this.renderDataNotLoaded.bind(this);
         this.handleSelectPlayer = this.handleSelectPlayer.bind(this);
         this.handleFileUpload = this.handleFileUpload.bind(this);
         this.handleReset = this.handleReset.bind(this);
         this.parseFile = this.parseFile.bind(this);
     }
+    /**
+     * Load data by hash from remote server
+     * @param hash Game hash
+     */
+    loadDataByHash(hash) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const url = new URL(`${constants_1.API_SERVER}/civ6-timeline/game/${hash}`);
+            url.searchParams.append("token", constants_1.API_TOKEN);
+            // NOTE: passing a URL object is valid, but typescript is being stupid
+            const response = yield window.fetch(url, {
+                cache: "no-cache",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                method: "GET",
+                mode: "cors",
+            });
+            yield this.setState({
+                isFileLoaded: true,
+            });
+            const json = yield response.json();
+            if (response.ok) {
+                console.log("data and metadata loaded from server successfully");
+                const serverData = json.data;
+                const metadata = json.metadata;
+                // make sure that serverData at least has Moments and Players keys
+                if ((!serverData.Moments) || (!serverData.Players)) {
+                    const msg = "server data must have both 'Moments' and 'Players' keys";
+                    console.error(msg);
+                    return this.setState({
+                        errorMsg: msg,
+                    });
+                }
+                console.log(metadata);
+                this.setState({
+                    metadata,
+                    serverData,
+                });
+            }
+            else {
+                this.setState({
+                    errorMsg: json.message,
+                });
+            }
+        });
+    }
     // NOTE: uncomment the section below to quickly load some data for testing the main timeline
     /*
-    async loadData() {
+    async loadLocalData() {
         const response = await window.fetch("game-data/2019-02-18-1827-Cyrus.json");
         if(response.ok) {
             console.log("loaded server data:");
@@ -32505,28 +32558,46 @@ class App extends React.Component {
             console.error("Failed to load data");
         }
     }
-
-    componentDidMount() {
-        this.loadData();
-    }
-
-    // NOTE: uncomment the section below to quickly test the appearance of the progress bar
-    componentDidMount() {
-        console.log("Go!");
-        this.setState({
-            isFileUploaded: true,
-            serverData: null
-        });
-    }
     */
-    handleReset() {
-        window.location.reload();
+    parseUrlParams() {
+        const query = window.location.search;
+        const params = {};
+        if (query) {
+            for (const pair of query.substr(1).split("&")) {
+                const i = pair.indexOf("=");
+                const k = pair.slice(0, i);
+                const v = pair.slice(i + 1);
+                params[k] = v;
+            }
+        }
+        return params;
+    }
+    componentDidMount() {
+        const params = this.parseUrlParams();
+        console.log(params);
+        if (params.hash) {
+            this.setState({
+                isFileUploaded: true,
+            }, () => this.loadDataByHash(params.hash));
+        }
+        // NOTE: uncomment the section below to quickly load some data for testing the main timeline
+        // this.loadLocalData();
+        // NOTE: uncomment the section below to quickly test the appearance of the progress bar
+        // console.log("Go!");
         // this.setState({
-        // 	isFileUploaded: false,
-        // 	serverData: null,
-        // 	targetPlayer: -1,
+        // 	isFileUploaded: true,
+        // 	serverData: null
         // });
     }
+    handleReset() {
+        // do not reload, go back to selection page
+        const url = `${window.location.protocol}//${window.location.host}`;
+        window.location.href = url;
+    }
+    /**
+     * Read a file object as serverData
+     * @param file the file object retrieved from the server
+     */
     parseFile(file) {
         return __awaiter(this, void 0, void 0, function* () {
             const reader = new FileReader();
@@ -32540,7 +32611,7 @@ class App extends React.Component {
                         throw new Error("JSON must have both 'Moments' and 'Players' keys");
                     }
                     this.setState({
-                        serverData: serverData,
+                        serverData,
                     }, () => {
                         return true;
                     });
@@ -32553,23 +32624,27 @@ class App extends React.Component {
                 }
             };
             // trigger the async callback above
-            const contents = reader.readAsText(file);
+            reader.readAsText(file);
         });
     }
-    handleFileUpload(file) {
+    handleFileUpload(file, hash) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.setState({
-                isFileUploaded: true,
-            }, () => {
-                console.log("[App] selected file");
-                // wait for state to change before doing the oother stuff
-                this.parseFile(file);
-            });
+            const url = `${window.location.protocol}//${window.location.host}?hash=${hash}`;
+            // console.log(url);
+            // redirect
+            window.location.href = url;
+            // return this.setState({
+            // 	isFileUploaded: true,
+            // }, () => {
+            // 	console.log("[App] selected file");
+            // 	// wait for state to change before doing the oother stuff
+            // 	this.parseFile(file);
+            // });
         });
     }
     handleSelectPlayer(playerIndex) {
         this.setState({
-            targetPlayer: playerIndex
+            targetPlayer: playerIndex,
         });
     }
     renderDataNotLoaded() {
@@ -32593,22 +32668,18 @@ class App extends React.Component {
                 React.createElement("button", { type: "button", className: "reset-btn btn btn-warning btn-lg", onClick: this.handleReset }, "Reset")));
         }
         else if (this.state.isFileUploaded && !this.state.errorMsg && !this.state.serverData) {
-            // TODO: this is an arbitrary number that just gives the user a sense of progress
-            // out of 100
-            let progress = 35;
-            let progressStyle = {
-                width: `${progress}%`
-            };
+            // kind of arbitrary numbers
+            const progress = this.state.isFileLoaded ? 80 : 35;
             return (React.createElement("div", null,
                 React.createElement("div", { className: "progress-container" },
-                    React.createElement("div", null, "Parsing..."),
-                    React.createElement("div", { className: "progress" },
-                        React.createElement("div", { className: "progress-bar progress-bar-striped progress-bar-animated", role: "progressbar", style: progressStyle, "aria-valuenow": progress, "aria-valuemin": 0, "aria-valuemax": 100 }))),
+                    React.createElement("div", null, this.state.isFileLoaded ? "Parsing..." : "Downloading..."),
+                    React.createElement(progress_bar_1.default, { progress: progress })),
                 React.createElement(footer_1.default, null)));
         }
-        else if (this.state.serverData) {
+        else if (this.state.serverData && this.state.metadata) {
             return (React.createElement("div", null,
                 React.createElement("div", null,
+                    React.createElement("h1", { className: "display-4" }, this.state.metadata.filename),
                     React.createElement("div", { className: "control-container" },
                         React.createElement(player_selector_1.default, { onSelectPlayer: this.handleSelectPlayer, players: this.state.serverData.Players, currentlySelectedPlayer: this.state.targetPlayer }),
                         React.createElement("button", { type: "button", className: "reset-btn btn btn-primary", onClick: this.handleReset }, "Reset - Upload New File")),
@@ -32625,6 +32696,30 @@ exports.default = App;
 
 /***/ }),
 
+/***/ "./src/components/constants.ts":
+/*!*************************************!*\
+  !*** ./src/components/constants.ts ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+// this is a stupid hack to prevent random crawling bots from DDOSing me
+// obviously completely ineffective against someone who can open up this source code and read this comment
+exports.API_TOKEN = "203c2595ad105722dbcbb41c4c380dfcec59cb98aaee41ad2d84c9cbfaa68feb";
+const remoteApiServer = "https://boompig.herokuapp.com";
+const localApiServer = "http://localhost:9897";
+const isLocalServer = () => {
+    const ipOrHostname = window.location.hostname;
+    return (ipOrHostname === "localhost" || ipOrHostname === "127.0.0.1");
+};
+exports.API_SERVER = isLocalServer() ? localApiServer : remoteApiServer;
+
+
+/***/ }),
+
 /***/ "./src/components/file-uploader.tsx":
 /*!******************************************!*\
   !*** ./src/components/file-uploader.tsx ***!
@@ -32634,60 +32729,137 @@ exports.default = App;
 
 "use strict";
 
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const classnames_1 = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const react_dropzone_1 = __webpack_require__(/*! react-dropzone */ "./node_modules/react-dropzone/dist/es/index.js");
-const classnames_1 = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 __webpack_require__(/*! ../../css/file-uploader.css */ "./css/file-uploader.css");
+const constants_1 = __webpack_require__(/*! ./constants */ "./src/components/constants.ts");
+const progress_bar_1 = __webpack_require__(/*! ./progress-bar */ "./src/components/progress-bar.tsx");
 class FileUploader extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedFile: null,
             errorMsg: null,
+            isUploading: false,
+            selectedFile: null,
+            serverFileHash: null,
         };
         this.fileRef = React.createRef();
         // because javascript is terrible
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDrop = this.handleDrop.bind(this);
         this.handleFileSelect = this.handleFileSelect.bind(this);
+        this.renderFileUploadForm = this.renderFileUploadForm.bind(this);
+        this.uploadFile = this.uploadFile.bind(this);
+        this.renderHasUploaded = this.renderHasUploaded.bind(this);
+        this.reset = this.reset.bind(this);
     }
+    reset() {
+        window.location.reload();
+    }
+    uploadFile(file) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const formData = new FormData();
+            formData.append("token", constants_1.API_TOKEN);
+            formData.append("timeline", file);
+            const response = yield window.fetch(`${constants_1.API_SERVER}/civ6-timeline/upload`, {
+                body: formData,
+                cache: "no-cache",
+                method: "POST",
+                mode: "cors",
+            });
+            // console.log(response);
+            const json = yield response.json();
+            console.log(json);
+            if (response.ok) {
+                this.setState({
+                    serverFileHash: json.hash,
+                }, () => {
+                    this.props.onFileUpload(this.state.selectedFile, this.state.serverFileHash);
+                });
+            }
+            else {
+                if (json && json.hash) {
+                    this.setState({
+                        serverFileHash: json.hash,
+                    }, () => {
+                        this.props.onFileUpload(this.state.selectedFile, this.state.serverFileHash);
+                    });
+                }
+                else {
+                    const body = yield response.text();
+                    this.setState({
+                        errorMsg: body,
+                        isUploading: false,
+                        selectedFile: null,
+                        serverFileHash: null,
+                    });
+                }
+            }
+        });
+    }
+    /**
+     * When the user submits the file using the file-open dialog
+     */
     handleFileSelect(e) {
         const files = this.fileRef.current.files;
         this.handleDrop(files, []);
     }
+    /**
+     * File has been selected and user clicks "Upload and Generate Timeline"
+     */
     handleSubmit(e) {
-        this.props.onFileUpload(this.state.selectedFile);
+        this.setState({
+            isUploading: true,
+        }, () => this.uploadFile(this.state.selectedFile));
+        // this.props.onFileUpload(this.state.selectedFile);
     }
+    /**
+     * When the user submits the file using drag and drop
+     */
     handleDrop(acceptedFiles, rejectedFiles) {
         const file = acceptedFiles[0];
         console.log("got file in Dropzone");
         if (file.type === "application/json") {
             this.setState({
-                selectedFile: file,
                 errorMsg: null,
+                selectedFile: file,
             });
         }
         else {
             this.setState({
-                selectedFile: null,
                 errorMsg: "Invalid file type. JSON file format expected.",
+                selectedFile: null,
             });
         }
     }
-    render() {
+    renderFileUploadForm() {
         let errorMsgElem = null;
         if (this.state.errorMsg) {
             errorMsgElem = React.createElement("div", { className: "alert alert-danger" }, this.state.errorMsg);
         }
-        // NOTE: I took the dropzone stuff almost completely from the example on https://github.com/react-dropzone/react-dropzone
+        const mb = this.state.selectedFile ? (this.state.selectedFile.size / (1024 * 1024)).toFixed(2) : 0;
+        // NOTE: I took the dropzone stuff almost completely from the example on
+        // https://github.com/react-dropzone/react-dropzone
         return (React.createElement("div", { className: "file-uploader" },
             React.createElement("p", { className: "instructions" }),
             errorMsgElem,
             this.state.selectedFile ?
-                React.createElement("div", { className: "alert alert-success" }, "File upload successful") :
+                React.createElement("div", { className: "alert alert-success" },
+                    "File selected - ",
+                    mb,
+                    "MB ") :
                 React.createElement(react_dropzone_1.default, { onDrop: this.handleDrop }, ({ getRootProps, getInputProps, isDragActive }) => {
-                    return (React.createElement("div", Object.assign({}, getRootProps(), { className: classnames_1.default('dropzone', { 'dropzone--isActive': isDragActive }) }),
+                    return (React.createElement("div", Object.assign({}, getRootProps(), { className: classnames_1.default("dropzone", { "dropzone--isActive": isDragActive }) }),
                         React.createElement("input", Object.assign({}, getInputProps())),
                         isDragActive ?
                             React.createElement("p", null, "Drop files here...") :
@@ -32697,7 +32869,32 @@ class FileUploader extends React.Component {
                 React.createElement("form", { role: "form", className: "file-upload-form" },
                     React.createElement("label", { htmlFor: "file" }, "Or select the file from disk"),
                     React.createElement("input", { type: "file", name: "file", className: "btn", onChange: this.handleFileSelect, ref: this.fileRef, accept: ".json" })) : null,
-            React.createElement("button", { type: "button", className: "upload-btn form-control btn btn-primary", disabled: this.state.errorMsg !== null || this.state.selectedFile === null, onClick: this.handleSubmit }, "Generate Timeline")));
+            React.createElement("button", { type: "button", className: "upload-btn form-control btn btn-primary", disabled: this.state.errorMsg !== null || this.state.selectedFile === null, onClick: this.handleSubmit }, "Upload and Generate Timeline")));
+    }
+    renderUploadProgress() {
+        // just a made-up number
+        return (React.createElement("div", { className: "file-uploader" }, this.state.errorMsg ? this.state.errorMsg :
+            React.createElement("div", null,
+                React.createElement("p", null, "Uploading file..."),
+                React.createElement(progress_bar_1.default, { progress: 65 }))));
+    }
+    renderHasUploaded() {
+        const redirectUrl = `${window.location.protocol}//${window.location.host}?hash=${this.state.serverFileHash}`;
+        return (React.createElement("div", { className: "file-uploader" },
+            React.createElement("div", { className: "alert alert-success" }, "File has successfully uploaded"),
+            React.createElement("a", { href: redirectUrl, className: "btn btn-primary" }, "Click here to see the timeline"),
+            React.createElement("button", { onClick: this.reset, className: "btn btn-warning" }, "Reset")));
+    }
+    render() {
+        if (this.state.serverFileHash) {
+            return this.renderHasUploaded();
+        }
+        else if (this.state.isUploading) {
+            return this.renderUploadProgress();
+        }
+        else {
+            return this.renderFileUploadForm();
+        }
     }
 }
 exports.default = FileUploader;
@@ -33085,20 +33282,29 @@ exports.default = {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-__webpack_require__(/*! react-tippy/dist/tippy.css */ "./node_modules/react-tippy/dist/tippy.css");
 const react_tippy_1 = __webpack_require__(/*! react-tippy */ "./node_modules/react-tippy/dist/react-tippy.js");
+__webpack_require__(/*! react-tippy/dist/tippy.css */ "./node_modules/react-tippy/dist/tippy.css");
 const moment_text_parser_1 = __webpack_require__(/*! ./moment-text-parser */ "./src/components/moment-text-parser.ts");
 const utils_1 = __webpack_require__(/*! ./utils */ "./src/components/utils.ts");
 const icons = {
-    "MOMENT_ARTIFACT_EXTRACTED": "https://vignette.wikia.nocookie.net/civilization/images/8/87/Artifact6.png/revision/latest?cb=20161108220057",
+    // tslint:disable-next-line
+    MOMENT_ARTIFACT_EXTRACTED: "https://vignette.wikia.nocookie.net/civilization/images/8/87/Artifact6.png/revision/latest?cb=20161108220057",
+    // tslint:disable-next-line
     // "MOMENT_CIVIC_CULTURVATED_IN_ERA_FIRST": "https://vignette.wikia.nocookie.net/civilization/images/2/2a/Civ6Culture.png/revision/latest?cb=20161108204306",
+    // tslint:disable-next-line
     // "MOMENT_TECH_RESEARCHED_IN_ERA_FIRST": "https://vignette.wikia.nocookie.net/civilization/images/7/79/Civ6Science.png/revision/latest?cb=20161108210007",
-    "MOMENT_PLAYER_GAVE_ENVOY_CANCELED_SUZERAIN_DURING_WAR": "https://vignette.wikia.nocookie.net/civilization/images/2/24/Envoy6.png/revision/latest?cb=20161107201124",
-    "MOMENT_PLAYER_GAVE_ENVOY_BECAME_SUZERAIN_FIRST_IN_WORLD": "https://vignette.wikia.nocookie.net/civilization/images/2/24/Envoy6.png/revision/latest?cb=20161107201124",
-    "MOMENT_RELIGION_FOUNDED": "https://vignette.wikia.nocookie.net/civilization/images/8/82/Civ6Faith.png/revision/latest?cb=20161108205537",
-    "MOMENT_RELIGION_FOUNDED_FIRST_IN_WORLD": "https://vignette.wikia.nocookie.net/civilization/images/8/82/Civ6Faith.png/revision/latest?cb=20161108205537",
-    "MOMENT_PANTHEON_FOUNDED": "https://vignette.wikia.nocookie.net/civilization/images/8/82/Civ6Faith.png/revision/latest?cb=20161108205537",
-    "MOMENT_PANTHEON_FOUNDED_FIRST_IN_WORLD": "https://vignette.wikia.nocookie.net/civilization/images/8/82/Civ6Faith.png/revision/latest?cb=20161108205537",
+    // tslint:disable-next-line
+    MOMENT_PLAYER_GAVE_ENVOY_CANCELED_SUZERAIN_DURING_WAR: "https://vignette.wikia.nocookie.net/civilization/images/2/24/Envoy6.png/revision/latest?cb=20161107201124",
+    // tslint:disable-next-line
+    MOMENT_PLAYER_GAVE_ENVOY_BECAME_SUZERAIN_FIRST_IN_WORLD: "https://vignette.wikia.nocookie.net/civilization/images/2/24/Envoy6.png/revision/latest?cb=20161107201124",
+    // tslint:disable-next-line
+    MOMENT_RELIGION_FOUNDED: "https://vignette.wikia.nocookie.net/civilization/images/8/82/Civ6Faith.png/revision/latest?cb=20161108205537",
+    // tslint:disable-next-line
+    MOMENT_RELIGION_FOUNDED_FIRST_IN_WORLD: "https://vignette.wikia.nocookie.net/civilization/images/8/82/Civ6Faith.png/revision/latest?cb=20161108205537",
+    // tslint:disable-next-line
+    MOMENT_PANTHEON_FOUNDED: "https://vignette.wikia.nocookie.net/civilization/images/8/82/Civ6Faith.png/revision/latest?cb=20161108205537",
+    // tslint:disable-next-line
+    MOMENT_PANTHEON_FOUNDED_FIRST_IN_WORLD: "https://vignette.wikia.nocookie.net/civilization/images/8/82/Civ6Faith.png/revision/latest?cb=20161108205537",
 };
 class Moment extends React.PureComponent {
     constructor(props) {
@@ -33281,7 +33487,6 @@ var PlayerType;
     PlayerType[PlayerType["BARBARIANS"] = 4] = "BARBARIANS";
     PlayerType[PlayerType["FREE_CITY"] = 5] = "FREE_CITY";
 })(PlayerType || (PlayerType = {}));
-;
 /**
  * Allow selecting from among the MAJOR civilizations participating in this game
  */
@@ -33324,13 +33529,13 @@ class PlayerSelector extends React.Component {
         return civName;
     }
     render() {
-        let playerElems = [];
+        const playerElems = [];
         // let activeClass = (this.props.currentlySelectedPlayer === -1 ? "active": "");
         playerElems.push(React.createElement("option", { 
             // className={`btn btn-secondary player ${activeClass}`}
             onClick: (e) => this.handleSelect(-1), key: "all-players" }, "All Players"));
-        for (let player of this.props.players) {
-            let playerType = this.getPlayerType(player);
+        for (const player of this.props.players) {
+            const playerType = this.getPlayerType(player);
             if (playerType === PlayerType.FREE_CITY ||
                 playerType === PlayerType.BARBARIANS ||
                 playerType === PlayerType.CITY_STATE) {
@@ -33338,7 +33543,7 @@ class PlayerSelector extends React.Component {
                 continue;
             }
             // activeClass = (player.Id === this.props.currentlySelectedPlayer ? "active": "");
-            let civName = this.getCivName(player);
+            const civName = this.getCivName(player);
             playerElems.push(React.createElement("option", { 
                 // className={`btn btn-secondary player ${activeClass}`}
                 onClick: (e) => this.handleSelect(player.Id), key: `player-${player.Id}` },
@@ -33351,6 +33556,31 @@ class PlayerSelector extends React.Component {
     }
 }
 exports.default = PlayerSelector;
+
+
+/***/ }),
+
+/***/ "./src/components/progress-bar.tsx":
+/*!*****************************************!*\
+  !*** ./src/components/progress-bar.tsx ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+class ProgressBar extends React.PureComponent {
+    render() {
+        const progressStyle = {
+            width: `${this.props.progress}%`,
+        };
+        return (React.createElement("div", { className: "progress" },
+            React.createElement("div", { className: "progress-bar progress-bar-striped progress-bar-animated", role: "progressbar", style: progressStyle, "aria-valuenow": this.props.progress, "aria-valuemin": 0, "aria-valuemax": 100 })));
+    }
+}
+exports.default = ProgressBar;
 
 
 /***/ }),
@@ -33375,7 +33605,7 @@ class Timeline extends React.PureComponent {
     }
     getTurnMap() {
         const turnMap = {};
-        for (let moment of this.props.moments) {
+        for (const moment of this.props.moments) {
             // don't add useless things to the turn map
             // if(this.props.targetPlayer >= 0 && moment.ActingPlayer !== this.props.targetPlayer) {
             // continue;
@@ -33392,15 +33622,15 @@ class Timeline extends React.PureComponent {
         // construct turnMap
         const turnMap = this.getTurnMap();
         console.log("constructing elements...");
-        let turnElems = [];
-        for (let turn in turnMap) {
-            let moments = [];
-            for (let moment of turnMap[turn]) {
+        const turnElems = [];
+        for (const turn in turnMap) {
+            const moments = [];
+            for (const moment of turnMap[turn]) {
                 if (this.props.targetPlayer === -1 || moment.ActingPlayer === this.props.targetPlayer) {
                     moments.push(React.createElement(moment_1.default, { moment: moment, key: `moment-${moment.Id}`, actingPlayer: this.props.players[moment.ActingPlayer] }));
                 }
             }
-            let turnElem = (React.createElement("div", { className: "turn", key: `turn-${turn}` },
+            const turnElem = (React.createElement("div", { className: "turn", key: `turn-${turn}` },
                 React.createElement("div", { className: "turn-number-container" },
                     React.createElement("div", { className: "turn-number", key: `turn-number-${turn}` }, turn)),
                 moments));

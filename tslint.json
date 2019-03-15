@@ -6,7 +6,12 @@
     "jsRules": {},
     "rules": {
 		"indent": [true, "tabs"],
-		"semicolon": [true, "always"]
+        "semicolon": [true, "always"],
+        "no-var-keyword": true,
+		"prefer-const": true,
+		"no-console": false,
+		"no-empty-interface": false,
+		"forin": false
 	},
     "rulesDirectory": []
 }

@@ -39,3 +39,7 @@
 	text-align: center;
 	font-size: 1.1rem;
 }
+
+.file-uploader a.btn {
+    margin-right: 1rem;
+}

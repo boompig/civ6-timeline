@@ -26,3 +26,9 @@ export interface ITimelineData {
 	Players: IPlayer[];
 	Moments: IMoment[];
 }
+
+export interface IMetadata {
+	file_hash: string;
+	filename: string;
+	created_at: string;
+}

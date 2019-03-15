@@ -32,6 +32,6 @@
     "webpack-cli": "^3.2.3"
   },
   "scripts": {
-    "lint": "tslint src/components/*.ts"
+    "lint": "tslint src/components/*"
   }
 }
