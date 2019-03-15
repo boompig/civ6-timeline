@@ -32591,7 +32591,8 @@ class App extends React.Component {
     }
     handleReset() {
         // do not reload, go back to selection page
-        const url = `${window.location.protocol}//${window.location.host}`;
+        // NOTE: pathname has leading slash
+        const url = `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
         window.location.href = url;
     }
     /**
@@ -32629,7 +32630,7 @@ class App extends React.Component {
     }
     handleFileUpload(file, hash) {
         return __awaiter(this, void 0, void 0, function* () {
-            const url = `${window.location.protocol}//${window.location.host}?hash=${hash}`;
+            const url = `${window.location.protocol}//${window.location.host}${window.location.pathname}?hash=${hash}`;
             // console.log(url);
             // redirect
             window.location.href = url;
@@ -32879,7 +32880,8 @@ class FileUploader extends React.Component {
                 React.createElement(progress_bar_1.default, { progress: 65 }))));
     }
     renderHasUploaded() {
-        const redirectUrl = `${window.location.protocol}//${window.location.host}?hash=${this.state.serverFileHash}`;
+        // NOTE: pathname has leading slash
+        const redirectUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}?hash=${this.state.serverFileHash}`;
         return (React.createElement("div", { className: "file-uploader" },
             React.createElement("div", { className: "alert alert-success" }, "File has successfully uploaded"),
             React.createElement("a", { href: redirectUrl, className: "btn btn-primary" }, "Click here to see the timeline"),

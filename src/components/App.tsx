@@ -151,7 +151,8 @@ export default class App extends React.Component<IAppProps, IAppState> {
 
 	public handleReset() {
 		// do not reload, go back to selection page
-		const url = `${window.location.protocol}//${window.location.host}`;
+		// NOTE: pathname has leading slash
+		const url = `${window.location.protocol}//${window.location.host}${window.location.pathname}`;
 		window.location.href = url;
 	}
 
@@ -189,7 +190,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
 	}
 
 	public async handleFileUpload(file: File, hash: string) {
-		const url = `${window.location.protocol}//${window.location.host}?hash=${hash}`;
+		const url = `${window.location.protocol}//${window.location.host}${window.location.pathname}?hash=${hash}`;
 		// console.log(url);
 		// redirect
 		window.location.href = url;

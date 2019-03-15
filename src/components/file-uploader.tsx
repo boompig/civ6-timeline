@@ -186,7 +186,8 @@ export default class FileUploader extends React.Component<IFileUploaderProps, IF
 	}
 
 	public renderHasUploaded() {
-		const redirectUrl = `${window.location.protocol}//${window.location.host}?hash=${this.state.serverFileHash}`;
+		// NOTE: pathname has leading slash
+		const redirectUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}?hash=${this.state.serverFileHash}`;
 		return (<div className="file-uploader">
 			<div className="alert alert-success">File has successfully uploaded</div>
 			<a href={redirectUrl} className="btn btn-primary">Click here to see the timeline</a>
