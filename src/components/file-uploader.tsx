@@ -51,37 +51,47 @@ export default class FileUploader extends React.Component<IFileUploaderProps, IF
 		const formData = new FormData();
 		formData.append("token", API_TOKEN);
 		formData.append("timeline", file);
-		const response = await window.fetch(`${API_SERVER}/civ6-timeline/upload`, {
-			body: formData,
-			cache: "no-cache",
-			method: "POST",
-			mode: "cors",
-		});
-		// console.log(response);
-		const json = await response.json();
-		console.log(json);
-		if (response.ok) {
-			this.setState({
-				serverFileHash: json.hash,
-			}, () => {
-				this.props.onFileUpload(this.state.selectedFile, this.state.serverFileHash);
+		try {
+			const response = await window.fetch(`${API_SERVER}/civ6-timeline/upload`, {
+				body: formData,
+				cache: "no-cache",
+				method: "POST",
+				mode: "cors",
 			});
-		} else {
-			if (json && json.hash) {
+			// console.log(response);
+			const json = await response.json();
+			console.log(json);
+			if (response.ok) {
 				this.setState({
 					serverFileHash: json.hash,
 				}, () => {
 					this.props.onFileUpload(this.state.selectedFile, this.state.serverFileHash);
 				});
 			} else {
-				const body = await response.text();
-				this.setState({
-					errorMsg: body,
-					isUploading: false,
-					selectedFile: null,
-					serverFileHash: null,
-				});
+				if (json && json.hash) {
+					this.setState({
+						serverFileHash: json.hash,
+					}, () => {
+						this.props.onFileUpload(this.state.selectedFile, this.state.serverFileHash);
+					});
+				} else {
+					const body = await response.text();
+					this.setState({
+						errorMsg: body,
+						isUploading: false,
+						selectedFile: null,
+						serverFileHash: null,
+					});
+				}
 			}
+		} catch (e) {
+			console.error(e);
+			this.setState({
+				errorMsg: `network request to server ${API_SERVER} failed`,
+				isUploading: false,
+				selectedFile: null,
+				serverFileHash: null
+			})
 		}
 	}
 
