@@ -28,10 +28,17 @@
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
+    "husky": "^3.0.5",
     "tslint": "^5.12.1",
     "webpack-cli": "^3.2.3"
   },
   "scripts": {
     "lint": "tslint src/components/*"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && webpack",
+      "pre-push": "yarn lint && webpack"
+    }
   }
 }

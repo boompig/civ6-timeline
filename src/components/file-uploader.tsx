@@ -90,8 +90,8 @@ export default class FileUploader extends React.Component<IFileUploaderProps, IF
 				errorMsg: `network request to server ${API_SERVER} failed`,
 				isUploading: false,
 				selectedFile: null,
-				serverFileHash: null
-			})
+				serverFileHash: null,
+			});
 		}
 	}
 

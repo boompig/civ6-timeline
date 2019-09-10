@@ -38175,7 +38175,7 @@ class FileUploader extends React.Component {
                     errorMsg: `network request to server ${constants_1.API_SERVER} failed`,
                     isUploading: false,
                     selectedFile: null,
-                    serverFileHash: null
+                    serverFileHash: null,
                 });
             }
         });
