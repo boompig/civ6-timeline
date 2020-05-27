@@ -33,7 +33,7 @@
     "webpack-cli": "^3.2.3"
   },
   "scripts": {
-    "lint": "tslint src/components/*"
+    "lint": "tslint src/*.tsx src/components/*"
   },
   "husky": {
     "hooks": {
