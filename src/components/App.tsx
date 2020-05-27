@@ -78,8 +78,13 @@ export default class App extends React.Component<IAppProps, IAppState> {
 			console.log("data and metadata loaded from server successfully");
 			const serverData = json.data;
 			const metadata = json.metadata;
-			// make sure that serverData at least has Moments and Players keys
-			if ((!serverData.Moments) || (!serverData.Players)) {
+			if (!serverData) {
+				const msg = "server data is null";
+				console.error(msg);
+				return this.setState({
+					errorMsg: msg,
+				});
+			} else if ((!serverData.Moments) || (!serverData.Players)) {
 				const msg = "server data must have both 'Moments' and 'Players' keys";
 				console.error(msg);
 				return this.setState({
