@@ -59540,6 +59540,7 @@ const moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.j
 const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const api_1 = __webpack_require__(/*! ./api */ "./src/components/api.ts");
 __webpack_require__(/*! ../../css/recent-uploads.css */ "./css/recent-uploads.css");
+const NUM_RECENT_UPLOADS = 10;
 class RecentUploads extends React.Component {
     constructor(props) {
         super(props);
@@ -59570,8 +59571,16 @@ class RecentUploads extends React.Component {
     componentDidMount() {
         this.getRecentUploads();
     }
+    /**
+     * Show most recent NUM_RECENT_UPLOADS uploads
+     * Sorted most recent first
+     */
     render() {
-        const uploads = this.state.recentUploads.map((metadata) => {
+        const uploads = this.state.recentUploads.sort((a, b) => {
+            const bDate = new Date(b.created_at);
+            const aDate = new Date(a.created_at);
+            return bDate.valueOf() - aDate.valueOf();
+        }).map((metadata) => {
             const url = new URL(window.location.href);
             const filename = metadata.filename;
             const dateOffset = moment(metadata.created_at).fromNow();
@@ -59585,7 +59594,7 @@ class RecentUploads extends React.Component {
                 React.createElement("span", { className: "created-at" },
                     "uploaded ",
                     dateOffset));
-        });
+        }).slice(0, NUM_RECENT_UPLOADS);
         if (this.state.isLoaded && this.state.recentUploads.length > 0) {
             return (React.createElement("div", { className: "recent-uploads" },
                 React.createElement("p", null, "Or view some of these recently uploaded files:"),
