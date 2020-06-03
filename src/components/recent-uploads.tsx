@@ -5,6 +5,8 @@ import {getRecentUploads} from "./api";
 
 import "../../css/recent-uploads.css";
 
+const NUM_RECENT_UPLOADS = 10;
+
 interface IRecentUpload {
 	created_at: string;
 	file_hash: string;
@@ -49,8 +51,16 @@ export default class RecentUploads extends React.Component<IProps, IState> {
 		this.getRecentUploads();
 	}
 
+	/**
+	 * Show most recent NUM_RECENT_UPLOADS uploads
+	 * Sorted most recent first
+	 */
 	public render(): JSX.Element {
-		const uploads = this.state.recentUploads.map((metadata) => {
+		const uploads = this.state.recentUploads.sort((a, b) => {
+			const bDate = new Date(b.created_at);
+			const aDate = new Date(a.created_at);
+			return bDate.valueOf() - aDate.valueOf();
+		}).map((metadata) => {
 			const url = new URL(window.location.href);
 			const filename = metadata.filename;
 			const dateOffset = moment(metadata.created_at).fromNow();
@@ -63,7 +73,7 @@ export default class RecentUploads extends React.Component<IProps, IState> {
 				<a href={link}>{ filename }</a>
 				<span className="created-at">uploaded { dateOffset }</span>
 			</div>;
-		});
+		}).slice(0, NUM_RECENT_UPLOADS);
 		if (this.state.isLoaded && this.state.recentUploads.length > 0) {
 			return (<div className="recent-uploads">
 				<p>Or view some of these recently uploaded files:</p>
