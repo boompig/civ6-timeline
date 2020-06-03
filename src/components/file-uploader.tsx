@@ -3,7 +3,7 @@ import * as React from "react";
 import Dropzone from "react-dropzone";
 
 import "../../css/file-uploader.css";
-import { API_SERVER, API_TOKEN } from "./constants";
+import { uploadFile } from "./api";
 import ProgressBar from "./progress-bar";
 
 interface IFileUploaderProps {
@@ -48,16 +48,8 @@ export default class FileUploader extends React.Component<IFileUploaderProps, IF
 	}
 
 	public async uploadFile(file: File) {
-		const formData = new FormData();
-		formData.append("token", API_TOKEN);
-		formData.append("timeline", file);
 		try {
-			const response = await window.fetch(`${API_SERVER}/civ6-timeline/upload`, {
-				body: formData,
-				cache: "no-cache",
-				method: "POST",
-				mode: "cors",
-			});
+			const response = await uploadFile(file);
 			// console.log(response);
 			const json = await response.json();
 			console.log(json);
@@ -87,7 +79,7 @@ export default class FileUploader extends React.Component<IFileUploaderProps, IF
 		} catch (e) {
 			console.error(e);
 			this.setState({
-				errorMsg: `network request to server ${API_SERVER} failed`,
+				errorMsg: `network request to API server failed`,
 				isUploading: false,
 				selectedFile: null,
 				serverFileHash: null,

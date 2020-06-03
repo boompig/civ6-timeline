@@ -1,10 +1,11 @@
 import * as React from "react";
-import { API_SERVER, API_TOKEN } from "./constants";
+import { getGame } from "./api";
 import FileUploader from "./file-uploader";
 import Footer from "./footer";
 import { IMetadata, ITimelineData } from "./interfaces";
 import PlayerSelector from "./player-selector";
 import ProgressBar from "./progress-bar";
+import RecentUploads from "./recent-uploads";
 import Timeline from "./timeline";
 
 import "../../css/App.css";
@@ -58,17 +59,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
 	 * @param hash Game hash
 	 */
 	public async loadDataByHash(hash: string) {
-		const url = new URL(`${API_SERVER}/civ6-timeline/game/${hash}`);
-		url.searchParams.append("token", API_TOKEN);
-		// NOTE: passing a URL object is valid, but typescript is being stupid
-		const response = await window.fetch((url as any), {
-			cache: "no-cache",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			method: "GET",
-			mode: "cors",
-		});
+		const response = await getGame(hash);
 		await this.setState({
 			isFileLoaded: true,
 		});
@@ -225,6 +216,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
 		if (!this.state.isFileUploaded) {
 			return <div>
 				<FileUploader onFileUpload={this.handleFileUpload} />
+				<RecentUploads />
 				<Footer />
 			</div>;
 		} else if (this.state.errorMsg) {
