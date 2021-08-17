@@ -24,7 +24,7 @@ Install JavaScript dependencies then build with `webpack`.
 
 ```
 yarn install
-webpack
+yarn webpack
 ```
 
 ## Linting
