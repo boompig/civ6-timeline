@@ -2,7 +2,7 @@ import {API_SERVER, API_TOKEN} from "./constants";
 
 export async function getRecentUploads(): Promise<Response> {
 	const url = new URL(API_SERVER);
-	url.pathname = "/civ6-timeline/games/recent";
+	url.pathname = "/apps/civ6-timeline/api/games/recent";
 	url.searchParams.append("token", API_TOKEN);
 	return window.fetch(url.toString(), {
 		cache: "no-cache",
@@ -16,7 +16,7 @@ export async function getRecentUploads(): Promise<Response> {
 
 export async function getGame(hash: string): Promise<Response> {
 	const url = new URL(API_SERVER);
-	url.pathname = `/civ6-timeline/game/${hash}`;
+	url.pathname = `/apps/civ6-timeline/api/game/${hash}`;
 	url.searchParams.append("token", API_TOKEN);
 	return window.fetch(url.toString(), {
 		cache: "no-cache",
@@ -33,7 +33,7 @@ export async function uploadFile(file: File): Promise<Response> {
 	formData.append("token", API_TOKEN);
 	formData.append("timeline", file);
 	const url = new URL(API_SERVER);
-	url.pathname = "/civ6-timeline/upload";
+	url.pathname = "/apps/civ6-timeline/api/upload";
 	return window.fetch(url.toString(), {
 		body: formData,
 		cache: "no-cache",
